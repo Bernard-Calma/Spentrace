@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LandingPage from './src/views/LandingPage';
 
-export default function App() {
+const App = () => {
   return (
     <View style={styles.container}>
       <LandingPage/>
@@ -10,6 +10,8 @@ export default function App() {
     </View>
   );
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
