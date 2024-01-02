@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 const LandingPage = () => {
     return(
         <View style={styles.landingPage}>
-            <Text style={styles.title}>Spentrace</Text>
+            <Text style={{fontFamily:"roboto-bold", fontWeight:"bold", fontSize:32}}>Spentrace</Text>
         </View>
     )
 }
@@ -15,15 +15,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: "10%",
         border: "solid",
-        borderWidth: 2,
-        borderColor: "blue"
-    },
-    title:{
-        fontSize: 32,
-        fontWeight: "bold",
-        border: "solid",
-        borderWidth: 2,
-        borderColor: "red"
-
+        // borderWidth: 2,
+        // borderColor: "blue",
     }
 })
