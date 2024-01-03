@@ -6,6 +6,8 @@ import { useCallback } from 'react';
 
 import LandingPage from './src/views/LandingPage';
 import { Header } from './src/components';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,11 +30,14 @@ const App = () => {
 
   if(!fontsLoaded) return null
   else return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <Header />
-      <LandingPage/>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store = {store}>
+      <View style={styles.container} onLayout={onLayoutRootView}>
+        <Header />
+        <LandingPage/>
+        <StatusBar style="auto" />
+      </View>
+    </Provider>
+
   );
 }
 
