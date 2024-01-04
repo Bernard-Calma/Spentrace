@@ -13,7 +13,8 @@ const Header = () => {
         <View style={styles.header}>
             <Logo />
             <View style={styles.title}>
-                <Text></Text>
+                {/* Menu button */}
+                <Text style = {{left: 20, opacity: 0}}> = </Text> 
                 <Text style={{
                     fontFamily: "roboto-bold", 
                     fontSize: 18,
@@ -50,6 +51,6 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: "bold",
         right: 20,
-        marginTop: -7
+        marginTop: -7.5
     }
 })
