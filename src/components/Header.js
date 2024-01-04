@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View } from "react-native"
-import { useEffect, useState } from "react";
+import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native"
 
 import Logo from "./Logo";
 import MonthChanger from "./MonthChanger";
@@ -7,14 +6,22 @@ import MonthChanger from "./MonthChanger";
 
 
 const Header = () => {
+    const handleAddBudget = () => {
+        alert("Add Budget");
+    }
     return(
         <View style={styles.header}>
             <Logo />
-            <Text style={{
-                fontFamily: "roboto-bold", 
-                fontSize: 18,
-                marginTop: 10
-            }}>Budget</Text>
+            <View style={styles.title}>
+                <Text></Text>
+                <Text style={{
+                    fontFamily: "roboto-bold", 
+                    fontSize: 18,
+                }}>Budget</Text>
+                <TouchableWithoutFeedback onPress={() => handleAddBudget()}>
+                    <Text style={styles.addButton}>+</Text>
+                </TouchableWithoutFeedback>
+            </View>
             <MonthChanger/>
         </View>
     )
@@ -29,5 +36,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
         // borderColor: "green", 
         // borderWidth: 1,
+    },
+    title: {
+        marginTop: 10,
+        width: "100%",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        // borderColor: "green", 
+        // borderWidth: 1,
+    },
+    addButton: {
+        fontSize: 30,
+        fontWeight: "bold",
+        right: 20,
+        marginTop: -7
     }
 })
