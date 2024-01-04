@@ -38,8 +38,7 @@ export default MonthChanger
 
 const styles = StyleSheet.create({
     monthChanger: {
-        margin: 20,
-        width: "90%",
+        margin: 10,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
