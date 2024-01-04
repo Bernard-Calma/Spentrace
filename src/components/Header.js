@@ -1,13 +1,13 @@
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native"
 
-import Logo from "./Logo";
-import MonthChanger from "./MonthChanger";
-
-
+import {Logo, MonthChanger} from ".";
+import { useDispatch } from "react-redux";
+import { changeView } from "../features/viewSlice";
 
 const Header = () => {
+    const dispatch = useDispatch();
     const handleAddBudget = () => {
-        alert("Add Budget");
+        dispatch(changeView("AddBudget"))
     }
     return(
         <View style={styles.header}>
