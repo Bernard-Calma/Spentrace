@@ -1,9 +1,13 @@
 import { StyleSheet, Text, View } from "react-native"
+import { Categories } from "./components"
 
 const AddBudget = () => {
     return(
         <View style = {styles.container}>
-            <Text>Add Budget</Text>
+            <Categories name = {"Account"}/>
+            <Categories name = {"Amount"}/>
+            <Categories name = {"Due date"}/>
+            <Categories name = {"Category"}/>
         </View>
     )
 }
