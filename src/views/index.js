@@ -1,5 +1,5 @@
 import LandingPage from "./LandingPage";
-import AddBudget from "./AddBudget";
+import AddBudget from "./AddBudget/AddBudget";
 
 export {
     LandingPage,

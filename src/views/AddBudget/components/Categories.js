@@ -1,11 +1,11 @@
 import { Text, View } from "react-native"
 
-const AddBudget = () => {
+const Categories = () =>{
     return(
         <View>
-            <Text>Add Budget</Text>
+            <Text>Categories</Text>
         </View>
     )
 }
 
-export default AddBudget
+export default Categories;

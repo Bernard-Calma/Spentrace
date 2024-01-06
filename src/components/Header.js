@@ -31,9 +31,7 @@ const Header = () => {
                 <Text style={{
                     fontFamily: "roboto-bold", 
                     fontSize: 18,
-                    position: "absolute",
-                    left: "43%"
-                }}>Budget</Text>
+                }}>{view === "LandingPage" ? "Budget" : "Add"}</Text>
                 <TouchableWithoutFeedback onPress={() => handleAddBudget()}>
                     <Text style={styles.addButton}>+</Text>
                 </TouchableWithoutFeedback>
@@ -61,7 +59,6 @@ const styles = StyleSheet.create({
         width: 15,
     },
     title: {
-        position: "relative",
         marginTop: 10,
         width: "100%",
         flexDirection: "row",
