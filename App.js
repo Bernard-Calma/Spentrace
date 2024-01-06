@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
@@ -30,11 +30,11 @@ const App = () => {
   if(!fontsLoaded) return null
   else return (
     <Provider store = {store}>
-      <View style={styles.container} onLayout={onLayoutRootView}>
+      <SafeAreaView style={{flex: 1}} onLayout={onLayoutRootView}>
         <Header />
         <MainScreen />
         <StatusBar style="auto" />
-      </View>
+      </SafeAreaView>
     </Provider>
 
   );
@@ -49,5 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontFamily: "Roboto",
+    borderWidth: 1,
+    borderColor: "red"
   },
 });
