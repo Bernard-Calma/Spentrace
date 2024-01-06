@@ -6,8 +6,8 @@ const AddBudget = () => {
         <View style = {styles.container}>
             <Categories name = {"Account"}/>
             <Categories name = {"Amount"} type = {"amount"}/>
-            <Categories name = {"Due date"}/>
-            <Categories name = {"Category"}/>
+            <Categories name = {"Due date"} type = {"date"}/>
+            <Categories name = {"Type"} type = {"type"}/>
         </View>
     )
 }
