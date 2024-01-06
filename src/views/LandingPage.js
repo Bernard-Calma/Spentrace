@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { MonthChanger } from "../components";
+import BudgetList from "./BudgetList/BudgetList";
 
 const LandingPage = () => {
     return(
         <View style={styles.landingPage}>
             <MonthChanger/>
+            <BudgetList />
         </View>
     )
 }
