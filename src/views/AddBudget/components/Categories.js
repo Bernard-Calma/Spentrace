@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
-import { RadioButtonText } from "../../../components"
+import { DateText, RadioButtonText } from "../../../components"
 // import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Categories = (props) =>{
@@ -19,20 +19,6 @@ const Categories = (props) =>{
         setSelectedRadio("Expense")
     }
 
-    const handleOnChangeDate = (day, inputNum, maxNum) => {
-        if(inputNum > maxNum) setDateNum({...dateNum, [day]: maxNum})
-        else setDateNum({...dateNum, [day]: inputNum})
-        // console.log(text)
-    }
-    const handleFixDate = (input) => {
-        if(dateNum[input] == 0) setDateNum({...dateNum, [input]: 1})
-        if(dateNum.day >= 30){
-            if(dateNum.month == 2) setDateNum({...dateNum, day: 29})
-            else if(dateNum.month % 2 == 0) {
-                setDateNum({...dateNum, day: 30})
-            } 
-        }
-    }
     return(
         <View style = {styles.container}>
             <Text style = {styles.text}>{name}{dateNum.month}{dateNum.day}</Text>
@@ -48,32 +34,10 @@ const Categories = (props) =>{
                     placeholder="$0"
                 />
                 : type === "date"
-                ? <View style = {styles.dateInputContainer}>
-                    <Text>Month</Text>
-                    <TextInput 
-                        style = {styles.dateInput}
-                        textAlign="right"
-                        inputMode="numeric"
-                        maxLength={2}
-                        placeholder="mm"
-                        onChangeText={text => handleOnChangeDate("month", text, 12)}
-                        onEndEditing={() => handleFixDate("month")}
-                        defaultValue={dateNum.month.toString()}
-                        value = {dateNum.month}
-                    />
-                    <Text>Date</Text>
-                    <TextInput 
-                        style = {styles.dateInput}
-                        textAlign="right"
-                        inputMode="numeric"
-                        maxLength={2}
-                        placeholder="dd"
-                        onChangeText={text => handleOnChangeDate("day", text, 31)}
-                        onEndEditing={() => handleFixDate("day")}
-                        defaultValue={dateNum.day.toString()}
-                        value = {dateNum.day}
-                    />
-                </View>
+                ? <DateText 
+                    setDateNum = {setDateNum}
+                    dateNum = {dateNum}
+                />
                 : type === "type"
                 ? <View style={styles.choicesContainer}>
                     <TouchableOpacity style = {styles.radioContainer} onPress={() => handleChangeRadioIncome()}>
@@ -123,19 +87,6 @@ const styles = StyleSheet.create({
     text: {
         fontFamily: "firaCode",
         fontSize: 16
-    },
-    dateInputContainer: {
-        flexDirection: "row",
-        alignItems: "center"
-    },
-    dateInput: {
-        width: 30,
-        fontSize: 16,
-        fontWeight: "bold",
-        color: "#10f",
-        borderWidth: 1,
-        borderColor: "black",
-        margin: 5
     },
     textInput: {
         width: "50%",
