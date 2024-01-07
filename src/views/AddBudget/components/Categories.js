@@ -11,6 +11,7 @@ const Categories = (props) =>{
 
     const [selectedRadio, setSelectedRadio] = useState()
     const [dateNum, setDateNum] = useState({month: 0, day: 0})
+    
     const handleChangeRadioIncome = () => {
         setSelectedRadio("Income")
     }
@@ -23,8 +24,8 @@ const Categories = (props) =>{
         else setDateNum({...dateNum, [day]: inputNum})
         // console.log(text)
     }
-    const handleFixDate = () => {
-        if(dateNum.month == 0) setDateNum({...dateNum, month: 1})
+    const handleFixDate = (input) => {
+        if(dateNum[input] == 0) setDateNum({...dateNum, [input]: 1})
         if(dateNum.day >= 30){
             if(dateNum.month == 2) setDateNum({...dateNum, day: 29})
             else if(dateNum.month % 2 == 0) {
@@ -56,7 +57,7 @@ const Categories = (props) =>{
                         maxLength={2}
                         placeholder="mm"
                         onChangeText={text => handleOnChangeDate("month", text, 12)}
-                        onEndEditing={handleFixDate}
+                        onEndEditing={() => handleFixDate("month")}
                         defaultValue={dateNum.month.toString()}
                         value = {dateNum.month}
                     />
@@ -68,7 +69,7 @@ const Categories = (props) =>{
                         maxLength={2}
                         placeholder="dd"
                         onChangeText={text => handleOnChangeDate("day", text, 31)}
-                        onEndEditing={handleFixDate}
+                        onEndEditing={() => handleFixDate("day")}
                         defaultValue={dateNum.day.toString()}
                         value = {dateNum.day}
                     />
