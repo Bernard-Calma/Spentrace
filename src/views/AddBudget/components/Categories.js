@@ -25,9 +25,12 @@ const Categories = (props) =>{
     }
     const handleFixDate = () => {
         if(dateNum.month == 0) setDateNum({...dateNum, month: 1})
-        if(dateNum.month % 2 !== 0) {
-
-       }
+        if(dateNum.day >= 30){
+            if(dateNum.month == 2) setDateNum({...dateNum, day: 29})
+            else if(dateNum.month % 2 == 0) {
+                setDateNum({...dateNum, day: 30})
+            } 
+        }
     }
     return(
         <View style = {styles.container}>
@@ -65,6 +68,8 @@ const Categories = (props) =>{
                         maxLength={2}
                         placeholder="dd"
                         onChangeText={text => handleOnChangeDate("day", text, 31)}
+                        onEndEditing={handleFixDate}
+                        defaultValue={dateNum.day.toString()}
                         value = {dateNum.day}
                     />
                 </View>
