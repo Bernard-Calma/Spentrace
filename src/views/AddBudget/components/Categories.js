@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { RadioButtonText } from "../../../components"
 // import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Categories = (props) =>{
@@ -9,15 +10,28 @@ const Categories = (props) =>{
     } = props
 
     const [selectedRadio, setSelectedRadio] = useState()
+    const [dateNum, setDateNum] = useState({month: 0, day: 0})
     const handleChangeRadioIncome = () => {
-        setSelectedRadio("income")
+        setSelectedRadio("Income")
     }
     const handleChangeRadioExpense = () => {
-        setSelectedRadio("expense")
+        setSelectedRadio("Expense")
+    }
+
+    const handleOnChangeDate = (day, inputNum, maxNum) => {
+        if(inputNum > maxNum) setDateNum({...dateNum, [day]: maxNum})
+        else setDateNum({...dateNum, [day]: inputNum})
+        // console.log(text)
+    }
+    const handleFixDate = () => {
+        if(dateNum.month == 0) setDateNum({...dateNum, month: 1})
+        if(dateNum.month % 2 !== 0) {
+
+       }
     }
     return(
         <View style = {styles.container}>
-            <Text style = {styles.text}>{name}</Text>
+            <Text style = {styles.text}>{name}{dateNum.month}{dateNum.day}</Text>
             {
                 type === "amount" 
                 ? <TextInput
@@ -30,12 +44,30 @@ const Categories = (props) =>{
                     placeholder="$0"
                 />
                 : type === "date"
-                ? <TextInput 
-                    style = {styles.dateInput}
-                    inputMode = "url"
-                    textAlign="right"
-                    placeholder="mm-dd"
-                />
+                ? <View style = {styles.dateInputContainer}>
+                    <Text>Month</Text>
+                    <TextInput 
+                        style = {styles.dateInput}
+                        textAlign="right"
+                        inputMode="numeric"
+                        maxLength={2}
+                        placeholder="mm"
+                        onChangeText={text => handleOnChangeDate("month", text, 12)}
+                        onEndEditing={handleFixDate}
+                        defaultValue={dateNum.month.toString()}
+                        value = {dateNum.month}
+                    />
+                    <Text>Date</Text>
+                    <TextInput 
+                        style = {styles.dateInput}
+                        textAlign="right"
+                        inputMode="numeric"
+                        maxLength={2}
+                        placeholder="dd"
+                        onChangeText={text => handleOnChangeDate("day", text, 31)}
+                        value = {dateNum.day}
+                    />
+                </View>
                 : type === "type"
                 ? <View style={styles.choicesContainer}>
                     <TouchableOpacity style = {styles.radioContainer} onPress={() => handleChangeRadioIncome()}>
@@ -50,6 +82,15 @@ const Categories = (props) =>{
                         </View>
                         <Text>Expense</Text>
                     </TouchableOpacity>
+                    <RadioButtonText 
+                        name = {"income"}
+                        value = {selectedRadio}
+                        hanleChangeRadioButton = {()=>handleChangeRadioIncome}
+                    />
+                    <RadioButtonText 
+                        name = {"expense"}
+                        value = {selectedRadio}
+                    />
                 </View>
                 :<TextInput 
                     style = {styles.textInput}
@@ -77,11 +118,18 @@ const styles = StyleSheet.create({
         fontFamily: "firaCode",
         fontSize: 16
     },
+    dateInputContainer: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
     dateInput: {
-        width: 100,
+        width: 30,
         fontSize: 16,
         fontWeight: "bold",
         color: "#10f",
+        borderWidth: 1,
+        borderColor: "black",
+        margin: 5
     },
     textInput: {
         width: "50%",
