@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeToNextMonth, changeToPreviousMonth } from '../features/dateSlice';
+import { changeToNextMonth, changeToPreviousMonth } from '../../../features/dateSlice';
+import { leftArrow, rightArrow } from '../../../../assets/icons';
 
 const MonthChanger = () => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -14,7 +15,7 @@ const MonthChanger = () => {
         <View style={styles.monthChanger}>
             <TouchableWithoutFeedback onPress={() => dispatch(changeToPreviousMonth())}>
                 <Image 
-                    source={require('../../assets/icons/left-arrow.png')}
+                    source={leftArrow}
                     style={styles.arrow}
                 />
             </TouchableWithoutFeedback>
@@ -26,7 +27,7 @@ const MonthChanger = () => {
 
             <TouchableWithoutFeedback onPress={() => dispatch(changeToNextMonth())}>
                 <Image 
-                    source={require('../../assets/icons/right-arrow.png')}
+                    source={rightArrow}
                     style={styles.arrow}
                 />
             </TouchableWithoutFeedback>

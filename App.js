@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { store } from './store';
 
-import {Header, MainScreen} from './src/components';
+import {Header} from './src/components';
+import LandingPage from './src/views/LandingPage';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,7 +34,7 @@ const App = () => {
     <Provider store = {store}>
       <SafeAreaView style={{flex: 1}} onLayout={onLayoutRootView}>
         <Header />
-        <MainScreen />
+        <LandingPage />
         <StatusBar style="auto" />
       </SafeAreaView>
     </Provider>
