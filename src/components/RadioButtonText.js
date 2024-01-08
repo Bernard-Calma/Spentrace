@@ -2,17 +2,31 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const RadioButtonText = (props) => {
     const {
-        name,
-        value,
-        hanleChangeRadioButton
+        names,
+        selectedRadio,
+        setSelectedRadio
     } = props;
+
+    const handleChangeRadio = (index) => {
+        setSelectedRadio(index);
+    }
     return(
-        <TouchableOpacity style = {styles.radioContainer} onPress={() => hanleChangeRadioButton}>
-                <View style={styles.radioButton}>
-                    <View style={value === "expense" && styles.radioButtonInnerSelected}></View>
-                </View>
-            <Text style ={styles.radioButtonText}>{name}</Text>
-        </TouchableOpacity>
+        <>
+        {
+            names?.map((name, index) => 
+                <TouchableOpacity 
+                    key = {index}
+                    style = {styles.radioContainer} 
+                    onPress={() => handleChangeRadio(index)}>
+                        <View style={styles.radioButton}>
+                            <View style={selectedRadio == index && styles.radioButtonInnerSelected}></View>
+                        </View>
+                    <Text style ={styles.radioButtonText}>{name}</Text>
+                </TouchableOpacity>
+            )
+        }
+        </>
+        
     )
 }
 

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 const DateText = ({setDateNum, dateNum}) => {
-    console.log(dateNum)
-
+    
     const handleOnChangeDate = (day, inputNum, maxNum) => {
         if(inputNum > maxNum) setDateNum({...dateNum, [day]: maxNum})
         else setDateNum({...dateNum, [day]: inputNum})
@@ -42,7 +41,7 @@ const DateText = ({setDateNum, dateNum}) => {
                 onChangeText={text => handleOnChangeDate("day", text, 31)}
                 onEndEditing={() => handleFixDate("day")}
                 defaultValue={dateNum.day.toString().toString()}
-                value = {dateNum.day}
+                value = {dateNum.day.toString()}
             />
         </View>
     )

@@ -11,22 +11,14 @@ const Categories = (props) =>{
 
     const [selectedRadio, setSelectedRadio] = useState()
     const [dateNum, setDateNum] = useState({month: 0, day: 0})
-    
-    const handleChangeRadioIncome = () => {
-        setSelectedRadio("Income")
-    }
-    const handleChangeRadioExpense = () => {
-        setSelectedRadio("Expense")
-    }
 
     return(
         <View style = {styles.container}>
-            <Text style = {styles.text}>{name}{dateNum.month}{dateNum.day}</Text>
+            <Text style = {styles.text}>{name}</Text>
             {
                 type === "amount" 
                 ? <TextInput
                     style = {styles.numberInput}
-                    value={12}
                     inputMode="decimal"
                     maxLength={7}
                     clearButtonMode="while-editing"
@@ -40,26 +32,10 @@ const Categories = (props) =>{
                 />
                 : type === "type"
                 ? <View style={styles.choicesContainer}>
-                    <TouchableOpacity style = {styles.radioContainer} onPress={() => handleChangeRadioIncome()}>
-                        <View style={styles.radioButton}>
-                            <View style={selectedRadio === "income" && styles.radioButtonInnerSelected}></View>
-                        </View>
-                        <Text>Income</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style = {styles.radioContainer} onPress={() => handleChangeRadioExpense()}>
-                        <View style={styles.radioButton}>
-                            <View style={selectedRadio === "expense" && styles.radioButtonInnerSelected}></View>
-                        </View>
-                        <Text>Expense</Text>
-                    </TouchableOpacity>
                     <RadioButtonText 
-                        name = {"income"}
-                        value = {selectedRadio}
-                        hanleChangeRadioButton = {()=>handleChangeRadioIncome}
-                    />
-                    <RadioButtonText 
-                        name = {"expense"}
-                        value = {selectedRadio}
+                        names = {["income","expense"]}
+                        selectedRadio = {selectedRadio}
+                        setSelectedRadio = {setSelectedRadio}
                     />
                 </View>
                 :<TextInput 
