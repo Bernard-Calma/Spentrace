@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
-    view: "LandingPage",
+    view: "Budget",
     isLoading: false
 }
 

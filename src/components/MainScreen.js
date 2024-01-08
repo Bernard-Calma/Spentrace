@@ -7,7 +7,7 @@ const MainScreen = () => {
     return(
         <View style = {styles.mainScreen}>
             {
-                view === "LandingPage" ? <LandingPage/>
+                view === "Budget" ? <LandingPage/>
                 : <AddBudget />
             }
         </View>

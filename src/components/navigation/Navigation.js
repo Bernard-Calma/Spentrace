@@ -6,16 +6,16 @@ const Navigation = () => {
     const dispatch = useDispatch();
     const {view} = useSelector(store => store.view)
     const handleAddBudget = () => {
-        dispatch(changeView("AddBudget"))
+        dispatch(changeView("Add Budget"))
     }
     const handleBack = () => {
-        dispatch(changeView("LandingPage"))
+        dispatch(changeView("Budget"))
     }
     return(
         <View style={styles.title}>
             {/* Menu button */}
             {
-                view === "LandingPage" ? <Text style = {styles.menu}> = </Text> 
+                view === "Budget" ? <Text style = {styles.menu}> = </Text> 
                 : <TouchableWithoutFeedback onPress={() => handleBack()}>
                     <Image 
                     source={require('../../../assets/icons/left-arrow.png')}
@@ -27,7 +27,7 @@ const Navigation = () => {
             <Text style={{
                 fontFamily: "roboto-bold", 
                 fontSize: 18,
-            }}>{view === "LandingPage" ? "Budget" : "Add"}</Text>
+            }}>{view}</Text>
             <TouchableWithoutFeedback onPress={() => handleAddBudget()}>
                 <Text style={styles.addButton}>+</Text>
             </TouchableWithoutFeedback>
