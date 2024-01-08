@@ -8,16 +8,21 @@ const NavAddBudget = () => {
     const handleChangeView = (view) => {
         dispatch(changeView(view))
     }
+    const handleSave = () => {
+        alert("Saved")
+    }
     return(
         <>
             <TouchableWithoutFeedback onPress={() => handleChangeView("Budget")}>
-                    <Image 
+                <Image 
                     source={leftArrow}
                     style={styles.back}
                 />
             </TouchableWithoutFeedback>  
             <Text style={ styles.text }>Add</Text>
-            <Text style={ styles.text }>Save</Text>
+            <TouchableWithoutFeedback onPress={handleSave}>
+                <Text style={ styles.text }>Save</Text>
+            </TouchableWithoutFeedback>  
         </>
     )
 }
