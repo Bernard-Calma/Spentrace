@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native"
+import { Image, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
 import { leftArrow } from "../../../../assets/icons";
 import { useDispatch } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
@@ -9,39 +9,28 @@ const NavAddBudget = () => {
         dispatch(changeView(view))
     }
     return(
-        <View style = {styles.navContainer}>
+        <>
             <TouchableWithoutFeedback onPress={() => handleChangeView("Budget")}>
                     <Image 
                     source={leftArrow}
                     style={styles.back}
                 />
             </TouchableWithoutFeedback>  
-            <Text style={{
-                fontFamily: "roboto-bold", 
-                fontSize: 18,
-            }}>Add</Text>
-            <Text style={{
-                fontFamily: "roboto-bold", 
-                fontSize: 18
-            }}>Save</Text>
-        </View>
+            <Text style={ styles.text }>Add</Text>
+            <Text style={ styles.text }>Save</Text>
+        </>
     )
 }
 
 export default NavAddBudget;
 
 const styles = StyleSheet.create({
-    navContainer: {
-        padding: 10,
-        width: "100%",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        // borderColor: "green", 
-        // borderWidth: 1,
-    },
     back: {
         height: 15,
         width: 15,
+    },
+    text: {
+        fontFamily: "roboto-bold", 
+        fontSize: 18
     }
 })
