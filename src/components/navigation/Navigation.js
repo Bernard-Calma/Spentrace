@@ -1,36 +1,16 @@
-import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native"
-import { useDispatch, useSelector } from "react-redux";
-import { changeView } from "../../features/viewSlice";
+import { StyleSheet, View } from "react-native"
+import { useSelector } from "react-redux";
+import { NavLandingPage, NavAddBudget } from "./components";
 
 const Navigation = () => {
-    const dispatch = useDispatch();
     const {view} = useSelector(store => store.view)
-    const handleAddBudget = () => {
-        dispatch(changeView("Add Budget"))
-    }
-    const handleBack = () => {
-        dispatch(changeView("Budget"))
-    }
     return(
         <View style={styles.title}>
-            {/* Menu button */}
-            {
-                view === "Budget" ? <Text style = {styles.menu}> = </Text> 
-                : <TouchableWithoutFeedback onPress={() => handleBack()}>
-                    <Image 
-                    source={require('../../../assets/icons/left-arrow.png')}
-                    style={styles.back}
-                />
-                </TouchableWithoutFeedback>        
+            {view === "Budget"
+                ? <NavLandingPage />
+                : <NavAddBudget />
             }
             
-            <Text style={{
-                fontFamily: "roboto-bold", 
-                fontSize: 18,
-            }}>{view}</Text>
-            <TouchableWithoutFeedback onPress={() => handleAddBudget()}>
-                <Text style={styles.addButton}>+</Text>
-            </TouchableWithoutFeedback>
         </View>
     )
 }
