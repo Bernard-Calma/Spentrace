@@ -1,6 +1,13 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { setBudgetToAdd } from "../features/budgetSlice";
 
 const RadioButtonText = (props) => {
+    const dispatch = useDispatch();
+    const {
+        type
+    } = useSelector(store => store.budget.budgetToAdd)
+
     const {
         names,
         selectedRadio,
@@ -8,8 +15,12 @@ const RadioButtonText = (props) => {
     } = props;
 
     const handleChangeRadio = (index) => {
+        dispatch(setBudgetToAdd({name: "type", value: index}))
         setSelectedRadio(index);
     }
+
+
+
     return(
         <>
         {
