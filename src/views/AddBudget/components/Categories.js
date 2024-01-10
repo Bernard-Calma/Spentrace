@@ -54,6 +54,7 @@ const Categories = (props) =>{
                 </View>
                 :<TextInput 
                     style = {styles.textInput}
+                    inputMode="text"
                     textAlign="right"
                     onChange = {e => handleChangeBudgetToAdd("accountName", e.nativeEvent.text)}
                 />

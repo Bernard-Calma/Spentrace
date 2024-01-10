@@ -14,11 +14,11 @@ const DateText = ({setDateNum, dateNum, handleChangeBudgetToAdd}) => {
         else handleChangeBudgetToAdd("dueDate", {...dueDate, [day]: inputNum})
     }
     const handleFixDate = (input) => {
-        if(dateNum[input] == 0) setDateNum({...dateNum, [input]: 1})
-        if(dateNum.day >= 30){
-            if(dateNum.month == 2) setDateNum({...dateNum, day: 29})
-            else if(dateNum.month % 2 == 0) {
-                setDateNum({...dateNum, day: 30})
+        if(dueDate[input] == 0) handleChangeBudgetToAdd("dueDate", {...dueDate, [input]: 1})
+        if(dueDate.day >= 30){
+            if(dueDate.month == 2) handleChangeBudgetToAdd("dueDate", {...dueDate, day: 29})
+            else if(dueDate.month % 2 == 0) {
+                handleChangeBudgetToAdd("dueDate", {...dueDate, day: 30})
             } 
         }
     }

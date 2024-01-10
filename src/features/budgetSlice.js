@@ -5,7 +5,7 @@ const initialState = {
     budgets: [],
     budgetToAdd: {
         accountName: "",
-        amoung: 0,
+        amount: 0,
         dueDate: {
             month: 0,
             day: 0
