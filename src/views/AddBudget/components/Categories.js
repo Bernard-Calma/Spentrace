@@ -35,6 +35,7 @@ const Categories = (props) =>{
                     clearButtonMode="while-editing"
                     textAlign="right"
                     placeholder="$0"
+                    value = {budgetToAdd.amount}
                     onChange = {e => handleChangeBudgetToAdd("amount", e.nativeEvent.text)}
                 />
                 : type === "date"
@@ -56,6 +57,7 @@ const Categories = (props) =>{
                     style = {styles.textInput}
                     inputMode="text"
                     textAlign="right"
+                    value = {budgetToAdd.accountName}
                     onChange = {e => handleChangeBudgetToAdd("accountName", e.nativeEvent.text)}
                 />
             }

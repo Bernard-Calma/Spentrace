@@ -13,13 +13,24 @@ const BudgetList = () => {
     useEffect(()=>{
         console.log("budgets: ", budgets)
         dispatch(getBudgets())
-        console.log("budgets: ", budgets)
+        // console.log("budgets: ", budgets)
     },[])
     return(
         <View style={styles.budgetList}>
             <MonthChanger/>
             <Text>Budget List</Text>
-            <Text>Budget to add: {budgetToAdd.name}</Text>
+            <Text>Budget to add: {budgetToAdd.accountName}</Text>
+            {
+                budgets?.map(budget => 
+                    <View>
+                        <Text>{budget.accountName}</Text>
+                        <Text>{budget.amount}</Text>
+                        <Text>{budget.dueDate.month}</Text>
+                        <Text>{budget.dueDate.day}</Text>
+                        <Text>{budget.type == 0 ? "Expense" : "Income" }</Text>
+                    </View>    
+                )
+            }
         </View>
     )
 }

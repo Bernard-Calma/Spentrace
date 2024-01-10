@@ -23,10 +23,18 @@ const budgetSlice = createSlice({
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
             console.log(state.budgetToAdd);
         },
-        addBudget: (state, {payload}) => {
-            console.log("Payload", payload)
-            // state.budgetToAdd = {...state.budgetToAdd, payload};
-            // console.log(state.budgetToAdd);
+        addBudget: (state) => {
+            state.budgets = [...state.budgets, state.budgetToAdd];
+            state.budgetToAdd = {
+                accountName: "",
+                amount: 0,
+                dueDate: {
+                    month: 0,
+                    day: 0
+                },
+                type: "",
+            };
+            console.log(state.budgets);
         },
         getBudgets:  (state) => {
             try{
