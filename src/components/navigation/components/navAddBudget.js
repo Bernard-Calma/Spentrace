@@ -1,15 +1,19 @@
 import { Image, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
 import { leftArrow } from "../../../../assets/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
+import { addBudget } from "../../../features/budgetSlice";
 
 const NavAddBudget = () => {
     const dispatch = useDispatch()
+    const {
+        budgetToAdd
+    } = useSelector(store => store.budget)
     const handleChangeView = (view) => {
         dispatch(changeView(view))
     }
     const handleSave = () => {
-        alert("Saved")
+        dispatch(addBudget(budgetToAdd))
     }
     return(
         <>
