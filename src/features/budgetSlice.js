@@ -6,8 +6,11 @@ const initialState = {
     budgetToAdd: {
         accountName: "",
         amoung: 0,
-        dueDate: "",
-        type: ""
+        dueDate: {
+            month: 0,
+            day: 0
+        },
+        type: "",
     },
     isLoading: false
 }
@@ -17,9 +20,8 @@ const budgetSlice = createSlice({
     initialState,
     reducers: {
         setBudgetToAdd: (state, {payload}) => {
-            console.log("setBudgetToAdd: ", payload)
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
-            // console.log(state.budgetToAdd);
+            console.log(state.budgetToAdd);
         },
         addBudget: (state, {payload}) => {
             console.log("Payload", payload)

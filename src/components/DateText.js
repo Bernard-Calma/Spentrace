@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import { useSelector } from "react-redux";
 
-const DateText = ({setDateNum, dateNum}) => {
-    
+const DateText = ({setDateNum, dateNum, handleChangeBudgetToAdd}) => {
+    const {
+        dueDate
+    } = useSelector(store => store.budget.budgetToAdd)
+
     const handleOnChangeDate = (day, inputNum, maxNum) => {
-        if(inputNum > maxNum) setDateNum({...dateNum, [day]: maxNum})
-        else setDateNum({...dateNum, [day]: inputNum})
-        // console.log(text)
+        if(inputNum > maxNum) {
+            handleChangeBudgetToAdd("dueDate", {...dueDate, [day]: maxNum})
+        }
+        else handleChangeBudgetToAdd("dueDate", {...dueDate, [day]: inputNum})
     }
     const handleFixDate = (input) => {
         if(dateNum[input] == 0) setDateNum({...dateNum, [input]: 1})
@@ -26,10 +31,9 @@ const DateText = ({setDateNum, dateNum}) => {
                 inputMode="numeric"
                 maxLength={2}
                 placeholder="mm"
+                value = {dueDate.month.toString()}
                 onChangeText={text => handleOnChangeDate("month", text, 12)}
                 onEndEditing={() => handleFixDate("month")}
-                defaultValue={dateNum.month.toString()}
-                value = {dateNum.month.toString()}
             />
             <Text>Date</Text>
             <TextInput 
@@ -38,10 +42,9 @@ const DateText = ({setDateNum, dateNum}) => {
                 inputMode="numeric"
                 maxLength={2}
                 placeholder="dd"
+                value = {dueDate.day.toString()}
                 onChangeText={text => handleOnChangeDate("day", text, 31)}
                 onEndEditing={() => handleFixDate("day")}
-                defaultValue={dateNum.day.toString().toString()}
-                value = {dateNum.day.toString()}
             />
         </View>
     )

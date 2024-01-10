@@ -35,11 +35,13 @@ const Categories = (props) =>{
                     clearButtonMode="while-editing"
                     textAlign="right"
                     placeholder="$0"
+                    onChange = {e => handleChangeBudgetToAdd("amount", e.nativeEvent.text)}
                 />
                 : type === "date"
                 ? <DateText 
                     setDateNum = {setDateNum}
                     dateNum = {dateNum}
+                    handleChangeBudgetToAdd = {handleChangeBudgetToAdd}
                 />
                 : type === "type"
                 ? <View style={styles.choicesContainer}>
@@ -47,12 +49,12 @@ const Categories = (props) =>{
                         names = {["income","expense"]}
                         selectedRadio = {selectedRadio}
                         setSelectedRadio = {setSelectedRadio}
+                        handleChangeBudgetToAdd = {handleChangeBudgetToAdd}
                     />
                 </View>
                 :<TextInput 
                     style = {styles.textInput}
                     textAlign="right"
-                    value = {budgetToAdd.accountName}
                     onChange = {e => handleChangeBudgetToAdd("accountName", e.nativeEvent.text)}
                 />
             }
