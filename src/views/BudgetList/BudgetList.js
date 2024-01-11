@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import MonthChanger from "./components/MonthChanger";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBudgets } from "../../features/budgetSlice";
+import { MonthChanger, Title } from "./components";
 
 const BudgetList = () => {
     const dispatch = useDispatch()
@@ -18,8 +18,7 @@ const BudgetList = () => {
     return(
         <View style={styles.budgetList}>
             <MonthChanger/>
-            <Text>Budget List</Text>
-            <Text>Budget to add: {budgetToAdd.accountName}</Text>
+            <Title/>
             {
                 budgets?.map(budget => 
                     <View>
