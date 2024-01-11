@@ -1,14 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBudgets } from "../../features/budgetSlice";
-import { MonthChanger, Title } from "./components";
+import { Budget, MonthChanger, Title } from "./components";
 
 const BudgetList = () => {
     const dispatch = useDispatch()
     const {
-        budgets,
-        budgetToAdd
+        budgets
     } = useSelector(store => store.budget)
     useEffect(()=>{
         console.log("budgets: ", budgets)
@@ -20,15 +19,7 @@ const BudgetList = () => {
             <MonthChanger/>
             <Title/>
             {
-                budgets?.map(budget => 
-                    <View>
-                        <Text>{budget.accountName}</Text>
-                        <Text>{budget.amount}</Text>
-                        <Text>{budget.dueDate.month}</Text>
-                        <Text>{budget.dueDate.day}</Text>
-                        <Text>{budget.type == 0 ? "Expense" : "Income" }</Text>
-                    </View>    
-                )
+                budgets?.map(budget => <Budget budget = {budget}/>)
             }
         </View>
     )
@@ -39,6 +30,7 @@ export default BudgetList;
 const styles = StyleSheet.create({
     budgetList: {
         width: "100%",
+        height: "89%",
         border: "solid",
         // borderWidth: 2,
         // borderColor: "blue",

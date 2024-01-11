@@ -21,10 +21,9 @@ const styles = StyleSheet.create({
         borderColor: "black",
     },
     titleText: {
+        width: "25%",
         fontSize: 16,
         textAlign: "center",
-        borderWidth: 1,
         borderColor: "black",
-        flex: 1,
     }
 })
