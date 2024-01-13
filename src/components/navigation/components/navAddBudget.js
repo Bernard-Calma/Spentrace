@@ -1,8 +1,11 @@
-import { Image, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
+import { Button, Image, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
 import { leftArrow } from "../../../../assets/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
 import { addBudget } from "../../../features/budgetSlice";
+import { useState } from "react";
+
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const NavAddBudget = () => {
     const dispatch = useDispatch()

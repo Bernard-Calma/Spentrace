@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getBudgets } from "../../features/budgetSlice";
@@ -9,6 +9,9 @@ const BudgetList = () => {
     const {
         budgets
     } = useSelector(store => store.budget)
+    const {
+        month
+    } = useSelector(store => store.date)
     useEffect(()=>{
         console.log("budgets: ", budgets)
         dispatch(getBudgets())
@@ -16,11 +19,11 @@ const BudgetList = () => {
     },[])
     return(
         <View style={styles.budgetList}>
-            <MonthChanger/>
+            {/* <MonthChanger/> */}
             <Title/>
             <ScrollView style = {styles.budgetsScrollView}>
             {
-                budgets?.map(budget => <Budget budget = {budget}/>)
+                budgets?.map(budget => budget.dueDate.month == month && <Budget budget = {budget}/>)
             }
             </ScrollView>
         </View>
