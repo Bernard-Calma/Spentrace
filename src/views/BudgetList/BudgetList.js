@@ -23,7 +23,7 @@ const BudgetList = () => {
             <Title/>
             <ScrollView style = {styles.budgetsScrollView}>
             {
-                budgets?.map(budget => budget.dueDate.month == month && <Budget budget = {budget}/>)
+                budgets?.map(budget => <Budget budget = {budget}/>)
             }
             </ScrollView>
         </View>
