@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
+import { Alert, Button, Image, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
 import { leftArrow } from "../../../../assets/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
@@ -16,7 +16,17 @@ const NavAddBudget = () => {
         dispatch(changeView(view))
     }
     const handleSave = () => {
-        dispatch(addBudget(budgetToAdd))
+        console.log(budgetToAdd)
+        if(budgetToAdd.accountName === "" 
+            || budgetToAdd.amount === 0 
+            || budgetToAdd.dueDate.day === 0 
+            || budgetToAdd.dueDate.month === 0 
+            || !budgetToAdd.type) {
+          Alert.alert("Fill up all information")
+        } else {
+          dispatch(addBudget(budgetToAdd))
+        }
+        
     }
     return(
         <>
