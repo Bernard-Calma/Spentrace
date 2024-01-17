@@ -6,6 +6,8 @@ import { addBudget } from "../../../features/budgetSlice";
 import { useState } from "react";
 
 import DateTimePicker from '@react-native-community/datetimepicker';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const NavAddBudget = () => {
     const dispatch = useDispatch()
@@ -15,6 +17,16 @@ const NavAddBudget = () => {
     const handleChangeView = (view) => {
         dispatch(changeView(view))
     }
+    const storeData = async (value) => {
+      try {
+        const jsonValue = JSON.stringify(value);
+        console.log(jsonValue, "Added")
+        await AsyncStorage.setItem('budgetList', jsonValue);
+      } catch (e) {
+        // saving error
+        console.log(e)
+      }
+    };
     const handleSave = () => {
         console.log(budgetToAdd)
         if(budgetToAdd.accountName === "" 
@@ -24,7 +36,8 @@ const NavAddBudget = () => {
             || !budgetToAdd.type) {
           Alert.alert("Fill up all information")
         } else {
-          dispatch(addBudget(budgetToAdd))
+          // dispatch(addBudget(budgetToAdd))
+          storeData(budgetToAdd);
         }
         
     }
