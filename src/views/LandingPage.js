@@ -1,10 +1,16 @@
 import { StyleSheet, View } from "react-native"
 import AddBudget from "./AddBudget/AddBudget";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BudgetList from "../views/BudgetList/BudgetList";
+import { useEffect } from "react";
+import { getBudgets } from "../features/budgetSlice";
 
 const LandingPage = () => {
+    const dispatch = useDispatch();
     const {view} = useSelector(store => store.view);
+    useEffect(()=>{
+        dispatch(getBudgets())
+      },[])
     return(
         <View style = {styles.LandingPage}>
             {

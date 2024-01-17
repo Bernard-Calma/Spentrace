@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
@@ -14,6 +14,16 @@ const initialState = {
     },
     isLoading: false
 }
+
+export const getBudgets = createAsyncThunk("buget/getBudgets", async (payload, thunkAPI) => {
+    try {
+        const jsonValue = await AsyncStorage.getItem("budgetList");
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+    } catch(err) {
+        console.log(err)
+        return thunkAPI.rejectWithValue("Error getting bills")
+    }
+})
 
 const budgetSlice = createSlice({
     name: "budget",
@@ -36,22 +46,41 @@ const budgetSlice = createSlice({
             };
             console.log(state.budgets);
         },
-        getBudgets:  (state) => {
-            try{
-                const jsonValue = AsyncStorage.getItem("budgets");
-                // console.log("jsonValue: ", jsonValue)
-                state.budgets = jsonValue != null ? JSON.parse(jsonValue) : null
-            } catch(err) {
-                // console.log(err)
-            }
-        }
+    },
+    extraReducers: builder => {
+        builder
+        .addCase(getBudgets.pending, state => {
+            state.isLoading = true;
+        })
+        .addCase(getBudgets.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            console.log("rejected payload: ", payload)
+        })
+        .addCase(getBudgets.fulfilled, (state, {payload}) => {
+            state.budgets = [...state.budgets, payload]
+            state.isLoading = false;
+        })
     }
 })
 
 export const {
     setBudgetToAdd,
     addBudget,
-    getBudgets
 } = budgetSlice.actions;
 
 export default budgetSlice.reducer;
+
+// const getData = async () => {
+    //     console.log("getData")
+    //     try {
+    //         console.log("getData 2")
+    //         const value = await AsyncStorage.getItem("budgetList");
+    //         if(value != null) {
+    //             console.log("Value: ", value)
+    //         } else {
+    //             console.log("null value")
+    //         }
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
