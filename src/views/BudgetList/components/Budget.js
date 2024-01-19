@@ -6,7 +6,7 @@ const Budget = ({budget}) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const dispatch = useDispatch();
     return(
-        <TouchableHighlight onPress={() => dispatch(showBudget())}>
+        <TouchableHighlight onPress={() => dispatch(showBudget(budget))}>
             <View style = {styles.budgetContainer}>
                 <Text style = {styles.budgetText}>{months[budget.dueDate.month]} {budget.dueDate.day}</Text>
                 <Text style = {styles.budgetText}>{budget.accountName}</Text>

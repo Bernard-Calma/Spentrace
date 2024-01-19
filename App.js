@@ -15,7 +15,8 @@ const App = () => {
   const [fontsLoaded] = useFonts({
     "roboto": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
     "roboto-bold": require("./assets/fonts/Roboto/Roboto-Bold.ttf"),
-    "firaCode": require("./assets/fonts/Fira_Code/static/FiraCode-Regular.ttf")
+    "firaCode": require("./assets/fonts/Fira_Code/static/FiraCode-Regular.ttf"),
+    "firaCode-bold": require("./assets/fonts/Fira_Code/static/FiraCode-Bold.ttf")
   })
 
   const onLayoutRootView = useCallback(async () => {
