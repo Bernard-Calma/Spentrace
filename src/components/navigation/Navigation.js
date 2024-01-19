@@ -6,8 +6,8 @@ const Navigation = () => {
     const {view} = useSelector(store => store.view)
     return(
         <View style={styles.navContainer}>
-            {view === "Budget"
-                ? <NavLandingPage />
+            {view === "Budget" ? <NavLandingPage />
+            :view === "ViewBudget" ? <></>
                 : <NavAddBudget />
             }
         </View>

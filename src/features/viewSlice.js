@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     view: "Budget",
+    budgetView: {},
     isLoading: false
 }
 
@@ -12,12 +13,16 @@ const viewSlice = createSlice({
     reducers: {
         changeView: (state, {payload}) => {
             state.view = payload;
+        },
+        showBudget: (state, {payload}) => {
+            state.view = "ViewBudget"
         }
     }
 })
 
 export const {
-    changeView
+    changeView,
+    showBudget
 } = viewSlice.actions;
 
 export default viewSlice.reducer; 

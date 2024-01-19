@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import BudgetList from "../views/BudgetList/BudgetList";
 import { useEffect } from "react";
 import { getBudgets } from "../features/budgetSlice";
+import ViewBudget from "./ViewBudget/ViewBudget";
 
 const LandingPage = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const LandingPage = () => {
         <View style = {styles.LandingPage}>
             {
                 view === "Budget" ? <BudgetList />
+                : view === "ViewBudget" ? <ViewBudget />
                 : <AddBudget />
             }
         </View>
