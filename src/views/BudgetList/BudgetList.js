@@ -12,7 +12,7 @@ const BudgetList = () => {
             <ScrollView style = {styles.budgetsScrollView}>
             {
                 budgets?.map((budget, index) => 
-                    index > 0 && <Budget 
+                    budgets.lenght && <Budget 
                         key = {index}
                         budget = {budget}
                     />)
