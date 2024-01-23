@@ -31,7 +31,7 @@ const budgetSlice = createSlice({
     reducers: {
         setBudgetToAdd: (state, {payload}) => {
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
-            console.log(state.budgetToAdd);
+            // console.log(state.budgetToAdd);
         },
         addBudget: (state) => {
             state.budgets = [...state.budgets, state.budgetToAdd];

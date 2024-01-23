@@ -1,14 +1,14 @@
 import { StyleSheet, View } from "react-native"
 import { useSelector } from "react-redux";
-import { NavLandingPage, NavAddBudget } from "./components";
+import { NavLandingPage, NavAddBudget, NavShowBudget } from "./components";
 
 const Navigation = () => {
     const {view} = useSelector(store => store.view)
     return(
         <View style={styles.navContainer}>
             {view === "Budget" ? <NavLandingPage />
-            :view === "ViewBudget" ? <></>
-                : <NavAddBudget />
+            :view === "ViewBudget" ? <NavShowBudget />
+            : <NavAddBudget />
             }
         </View>
     )

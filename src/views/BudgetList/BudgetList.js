@@ -6,13 +6,15 @@ const BudgetList = () => {
     const {
         budgets
     } = useSelector(store => store.budget)
+    // console.log("BudgetList - Budget: ", budgets)
+    // console.log("BudgetList - Budget - Length: ", budgets.length)
     return(
         <View style={styles.budgetList}>
             <Title/>
             <ScrollView style = {styles.budgetsScrollView}>
             {
                 budgets?.map((budget, index) => 
-                    budgets.lenght && <Budget 
+                    budgets.length && <Budget 
                         key = {index}
                         budget = {budget}
                     />)
