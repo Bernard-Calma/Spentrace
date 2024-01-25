@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const initialState = {
     budgets: [],
     budgetToAdd: {
+        id: this.budgets?.length,
         accountName: "",
         amount: 0,
         dueDate: {
@@ -46,6 +47,11 @@ const budgetSlice = createSlice({
             };
             console.log(state.budgets);
         },
+        deleteBudget: (state, {payload}) => {
+            console.log("Delete budget: ", payload)
+            state.budgets = state.budgets.filter(budget => !budget.accountName === payload.accountName)
+            console.log("Budgets after delete: ", state.budgets)
+        }
     },
     extraReducers: builder => {
         builder
@@ -57,6 +63,7 @@ const budgetSlice = createSlice({
             console.log("rejected payload: ", payload)
         })
         .addCase(getBudgets.fulfilled, (state, {payload}) => {
+            console.log(payload)
             state.budgets = [...state.budgets, payload]
             state.isLoading = false;
         })
@@ -66,6 +73,7 @@ const budgetSlice = createSlice({
 export const {
     setBudgetToAdd,
     addBudget,
+    deleteBudget
 } = budgetSlice.actions;
 
 export default budgetSlice.reducer;
