@@ -20,7 +20,7 @@ const NavAddBudget = () => {
     const storeData = async (value) => {
       try {
         const jsonValue = JSON.stringify(value);
-        console.log(jsonValue, "Added")
+        // console.log(jsonValue, "Added")
         await AsyncStorage.setItem('budgetList', jsonValue);
       } catch (e) {
         // saving error
@@ -28,16 +28,14 @@ const NavAddBudget = () => {
       }
     };
     const handleSave = () => {
-        console.log(budgetToAdd)
         if(budgetToAdd.accountName === "" 
             || budgetToAdd.amount === 0 
             || budgetToAdd.dueDate.day === 0 
             || budgetToAdd.dueDate.month === 0 
-            || !budgetToAdd.type) {
+            || budgetToAdd.type === -1) {
           Alert.alert("Fill up all information")
         } else {
-          // dispatch(addBudget(budgetToAdd))
-          storeData(budgetToAdd);
+          dispatch(addBudget(budgetToAdd));
         }
         
     }

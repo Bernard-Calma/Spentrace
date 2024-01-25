@@ -11,7 +11,7 @@ const initialState = {
             month: 0,
             day: 0
         },
-        type: "",
+        type: -1,
     },
     isLoading: false
 }
@@ -35,7 +35,8 @@ const budgetSlice = createSlice({
             // console.log(state.budgetToAdd);
         },
         addBudget: (state) => {
-            state.budgets = [...state.budgets, state.budgetToAdd];
+            console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
+            state.budgets = [...state.budgets, {...state.budgetToAdd, id: state.budgets?.length || 0}];
             state.budgetToAdd = {
                 accountName: "",
                 amount: 0,
@@ -45,7 +46,7 @@ const budgetSlice = createSlice({
                 },
                 type: "",
             };
-            console.log(state.budgets);
+            console.log("State budgets after adding", state.budgets);
         },
         deleteBudget: (state, {payload}) => {
             console.log("Delete budget: ", payload)
