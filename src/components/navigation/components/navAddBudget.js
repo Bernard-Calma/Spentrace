@@ -2,7 +2,7 @@ import { Alert, Button, Image, StyleSheet, Text, TouchableWithoutFeedback } from
 import { leftArrow } from "../../../../assets/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
-import { addBudget } from "../../../features/budgetSlice";
+import { addBudget, addBudgetToLocal } from "../../../features/budgetSlice";
 import { useState } from "react";
 
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -36,6 +36,7 @@ const NavAddBudget = () => {
           Alert.alert("Fill up all information")
         } else {
           dispatch(addBudget(budgetToAdd));
+          dispatch(addBudgetToLocal())
         }
         
     }

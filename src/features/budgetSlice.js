@@ -19,11 +19,24 @@ const initialState = {
 export const getBudgets = createAsyncThunk("buget/getBudgets", async (payload, thunkAPI) => {
     try {
         const jsonValue = await AsyncStorage.getItem("budgetList");
+        // console.log(jsonValue);
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch(err) {
         console.log(err)
         return thunkAPI.rejectWithValue("Error getting bills")
     }
+})
+
+export const addBudgetToLocal = createAsyncThunk("budget/addBudgetToLocal", async (state, thunkAPI) => {
+    console.log("addBudgetToLocal: ", state.budgets)
+    try {
+        const jsonValue = JSON.stringify(value);
+        // console.log(jsonValue, "Added")
+        await AsyncStorage.setItem('budgetList', jsonValue);
+      } catch (e) {
+        // saving error
+        console.log(e)
+      }
 })
 
 const budgetSlice = createSlice({
@@ -34,8 +47,8 @@ const budgetSlice = createSlice({
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
             // console.log(state.budgetToAdd);
         },
-        addBudget: (state) => {
-            console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
+        addBudget: async (state) => {
+            // console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
             state.budgets = [...state.budgets, {...state.budgetToAdd, id: state.budgets?.length || 0}];
             state.budgetToAdd = {
                 accountName: "",
@@ -46,7 +59,16 @@ const budgetSlice = createSlice({
                 },
                 type: "",
             };
-            console.log("State budgets after adding", state.budgets);
+            // console.log("State budgets after adding", state.budgets);
+            console.log("addBudgetToLocal: ", state.budgets)
+            try {
+                const jsonValue = JSON.stringify({budgets: state.budgets});
+                // // console.log(jsonValue, "Added")
+                await AsyncStorage.setItem('budgetList', jsonValue);
+            } catch (e) {
+                // saving error
+                console.log(e)
+            }
         },
         deleteBudget: (state, {payload}) => {
             console.log("Delete budget: ", payload)
@@ -64,9 +86,21 @@ const budgetSlice = createSlice({
             console.log("rejected payload: ", payload)
         })
         .addCase(getBudgets.fulfilled, (state, {payload}) => {
-            console.log(payload)
-            state.budgets = [...state.budgets, payload]
+            console.log("getBudgets payload: ", payload)
+            state.budgets = payload.budgets;
             state.isLoading = false;
+        })
+        .addCase(addBudgetToLocal.pending, state => {
+            state.isLoading = true;
+        })
+        .addCase(addBudgetToLocal.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            console.log("rejected payload: ", payload)
+        })
+        .addCase(addBudgetToLocal.fulfilled, (state, {payload}) => {
+            console.log("addBudgetToLocal payload: ", payload)
+            // state.budgets = [...state.budgets, payload]
+            // state.isLoading = false;
         })
     }
 })
