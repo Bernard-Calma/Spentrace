@@ -8,9 +8,9 @@ const Budget = ({budget}) => {
     return(
         <TouchableHighlight onPress={() => dispatch(showBudget(budget))}>
             <View style = {styles.budgetContainer}>
-                <Text style = {styles.budgetText}>{months[budget.dueDate.month]} {budget.dueDate.day}</Text>
+                <Text style = {styles.budgetText}>{months[parseInt(budget.dueDate.month) - 1].slice(0,3)} {parseInt(budget.dueDate.day)}</Text>
                 <Text style = {styles.budgetText}>{budget.accountName}</Text>
-                <Text style = {budget.budgetText === 0 ? styles.budgetText : styles.budgetTextNegative}>${budget.amount}</Text>
+                <Text style = {budget.budgetText === 0 ? styles.budgetText : styles.budgetTextNegative}>${parseInt(budget.amount).toFixed(2)}</Text>
                 <Text style = {styles.budgetText}>{budget.type == 0 ? "Expense" : "Income" }</Text>
             </View>
         </TouchableHighlight>
