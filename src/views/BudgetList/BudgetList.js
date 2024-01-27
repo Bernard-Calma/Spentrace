@@ -1,8 +1,10 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
 import { Budget, Title } from "./components";
+import { useState } from "react";
 
 const BudgetList = () => {
+    let runningAmount = 0
     const {
         budgets
     } = useSelector(store => store.budget)
@@ -13,11 +15,14 @@ const BudgetList = () => {
             <Title/>
             <ScrollView style = {styles.budgetsScrollView}>
             {
-                budgets?.map((budget, index) => 
-                    budgets.length && <Budget 
+                budgets?.map((budget, index) => {
+                    if(budget.type === 1) runningAmount += parseInt(budget.amount)
+                    else runningAmount -= parseInt(budget.amount)
+                    return budgets.length && <Budget 
                         key = {index}
                         budget = {budget}
-                    />)
+                        runningAmount = {runningAmount}
+                    />})
             }
             </ScrollView>
         </View>

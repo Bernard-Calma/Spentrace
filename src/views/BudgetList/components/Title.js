@@ -6,7 +6,7 @@ const Title = () => {
             <Text style = {styles.titleText}>Due Date</Text>
             <Text style = {styles.titleText}>Name</Text>
             <Text style = {styles.titleText}>Amount</Text>
-            <Text style = {styles.titleText}>Type</Text>
+            <Text style = {styles.titleText}>Total</Text>
         </View>
     )
 }
