@@ -19,7 +19,7 @@ const initialState = {
 export const getBudgets = createAsyncThunk("buget/getBudgets", async (payload, thunkAPI) => {
     try {
         const jsonValue = await AsyncStorage.getItem("budgetList");
-        // console.log(jsonValue);
+        // console.log("Get Budgets", jsonValue);
         return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch(err) {
         console.log(err)
@@ -92,7 +92,7 @@ const budgetSlice = createSlice({
         })
         .addCase(getBudgets.fulfilled, (state, {payload}) => {
             console.log("getBudgets payload: ", payload)
-            state.budgets = payload.budgets;
+            state.budgets = payload.budgets != null ? payload.budgets : [];
             state.isLoading = false;
         })
         .addCase(addBudgetToLocal.pending, state => {
