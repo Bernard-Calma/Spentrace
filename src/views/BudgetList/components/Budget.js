@@ -10,7 +10,7 @@ const Budget = ({budget}) => {
             <View style = {styles.budgetContainer}>
                 <Text style = {styles.budgetText}>{months[parseInt(budget.dueDate.month) - 1].slice(0,3)} {parseInt(budget.dueDate.day)}</Text>
                 <Text style = {styles.budgetText}>{budget.accountName}</Text>
-                <Text style = {budget.budgetText === 0 ? styles.budgetText : styles.budgetTextNegative}>${parseInt(budget.amount).toFixed(2)}</Text>
+                <Text style = {budget.type === 1 ? styles.budgetTextPositive : styles.budgetTextNegative}>${parseInt(budget.amount).toFixed(2)}</Text>
                 <Text style = {styles.budgetText}>{budget.type == 0 ? "Expense" : "Income" }</Text>
             </View>
         </TouchableHighlight>
@@ -34,6 +34,13 @@ const styles = StyleSheet.create({
     },
     budgetTextNegative: {
         color: "red",
+        width: "25%",
+        fontSize: 16,
+        textAlign: "center",
+        borderWidth: 1,
+    },
+    budgetTextPositive: {
+        color: "green",
         width: "25%",
         fontSize: 16,
         textAlign: "center",
