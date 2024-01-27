@@ -1,7 +1,8 @@
-import { Alert, StyleSheet, Text, TouchableHighlight, View } from "react-native"
+import { Alert, Image, StyleSheet, Text, TouchableHighlight, View } from "react-native"
 import { TextValue } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBudget } from "../../features/budgetSlice";
+import { deleteIcon } from "../../../assets/icons";
 
 const ViewBudget = () =>{
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -39,7 +40,7 @@ const ViewBudget = () =>{
             />
             <TextValue 
                 name = {"Amount"}
-                value = {amount}
+                value = {parseInt(amount).toFixed(2)}
             />
             <TextValue 
                 name = {"Type"}
@@ -49,7 +50,10 @@ const ViewBudget = () =>{
                 onPress={() => handleDelete()} 
                 style={styles.deleteContainer}
             >
-                <Text styles = {styles.deleteText}>Delete</Text>
+                <Image 
+                    style = {styles.deleteIcon}
+                    source={deleteIcon}
+                />
             </TouchableHighlight>
             
         </View>
@@ -61,7 +65,7 @@ export default ViewBudget;
 
 const styles = StyleSheet.create({
     viewBudgetContainer: {
-        height: 400,
+        height: 300,
         justifyContent: "space-around",
         // borderColor: "green", 
         // borderWidth: 1,
@@ -69,15 +73,12 @@ const styles = StyleSheet.create({
     deleteContainer: {
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "green",
-        borderColor: "black",
-        borderWidth: 1,
-        borderRadius: "30%",
-        width: 60,
-        height: 60,
+        // backgroundColor: "red",
+        borderRadius: "10",
         alignSelf: "center",
     },
-    deleteText: {
-        color: "white"
+    deleteIcon: {
+        width: 40,
+        height: 40,
     }
 })
