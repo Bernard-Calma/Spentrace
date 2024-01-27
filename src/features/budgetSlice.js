@@ -60,7 +60,15 @@ const budgetSlice = createSlice({
         },
         addBudget: (state) => {
             // console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
-            state.budgets = [...state.budgets, {...state.budgetToAdd, id: state.budgets?.length || 0}];
+            state.budgets = [...state.budgets, {
+                ...state.budgetToAdd, 
+                id: state.budgets?.length || 0,
+                dueDate: {
+                    month: state.budgetToAdd.dueDate.month * 1,
+                    day: state.budgetToAdd.dueDate.day * 1,
+                },
+                amount: state.budgetToAdd.amount * 1
+            }];
             state.budgetToAdd = {
                 accountName: "",
                 amount: 0,
