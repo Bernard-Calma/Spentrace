@@ -1,25 +1,15 @@
-import { Image, StyleSheet, TouchableWithoutFeedback } from "react-native"
+import { TouchableWithoutFeedback } from "react-native"
 import { useDispatch } from "react-redux"
 import { changeView } from "../../../features/viewSlice";
-import { leftArrow } from "../../../../assets/icons";
+import { Entypo } from '@expo/vector-icons';
 
 const navShowBudget = () => {
     const dispatch = useDispatch();
     return(<>
         <TouchableWithoutFeedback onPress={() => dispatch(changeView("Budget"))}>
-            <Image
-                source={leftArrow}
-                style={styles.back}
-            />
+            <Entypo name="back" size={24} color="black" />
         </TouchableWithoutFeedback>  
     </>)
 }
 
 export default navShowBudget;
-
-const styles = StyleSheet.create({
-    back: {
-        height: 15,
-        width: 15,
-    }
-})

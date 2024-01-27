@@ -1,7 +1,7 @@
-import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeToNextMonth, changeToPreviousMonth } from '../../../features/dateSlice';
-import { leftArrow, rightArrow } from '../../../../assets/icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const MonthChanger = () => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -14,10 +14,7 @@ const MonthChanger = () => {
     return(
         <View style={styles.monthChanger}>
             <TouchableWithoutFeedback onPress={() => dispatch(changeToPreviousMonth())}>
-                <Image 
-                    source={leftArrow}
-                    style={styles.arrow}
-                />
+                <AntDesign name="caretleft" size={24} color="black" />
             </TouchableWithoutFeedback>
             
             <Text style={{
@@ -26,10 +23,7 @@ const MonthChanger = () => {
             }}>{months[month]} {year}</Text>
 
             <TouchableWithoutFeedback onPress={() => dispatch(changeToNextMonth())}>
-                <Image 
-                    source={rightArrow}
-                    style={styles.arrow}
-                />
+                <AntDesign name="caretright" size={24} color="black" />
             </TouchableWithoutFeedback>
         </View>
     )

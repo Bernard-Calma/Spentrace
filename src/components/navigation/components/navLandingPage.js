@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
 import { useDispatch } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
+import { Entypo } from '@expo/vector-icons';
 
 const navLandingPage = () => {
     const dispatch = useDispatch()
@@ -16,7 +17,7 @@ const navLandingPage = () => {
                 fontSize: 18,
             }}>Budget List</Text>
             <TouchableWithoutFeedback onPress={() => handleChangeView("Add Budget")}>
-                <Text style={styles.addButton}>+</Text>
+                <Entypo name="add-to-list" size={24} color="black" />
             </TouchableWithoutFeedback>
         </>
     )
@@ -27,10 +28,5 @@ export default navLandingPage;
 const styles = StyleSheet.create({
     menu: {
         opacity: 0
-    },
-    addButton: {
-        fontSize: 30,
-        fontWeight: "bold",
-        marginTop: -7.5
     }
 })

@@ -1,8 +1,8 @@
-import { Alert, Image, StyleSheet, Text, TouchableHighlight, View } from "react-native"
+import { Alert, StyleSheet, TouchableHighlight, View } from "react-native"
 import { TextValue } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBudget } from "../../features/budgetSlice";
-import { deleteIcon } from "../../../assets/icons";
+import { AntDesign } from '@expo/vector-icons';
 
 const ViewBudget = () =>{
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -50,11 +50,9 @@ const ViewBudget = () =>{
                 onPress={() => handleDelete()} 
                 style={styles.deleteContainer}
             >
-                <Image 
-                    style = {styles.deleteIcon}
-                    source={deleteIcon}
-                />
+                <AntDesign name="delete" size={24} color="red" />
             </TouchableHighlight>
+            
             
         </View>
     )
@@ -76,9 +74,5 @@ const styles = StyleSheet.create({
         // backgroundColor: "red",
         borderRadius: "10",
         alignSelf: "center",
-    },
-    deleteIcon: {
-        width: 40,
-        height: 40,
     }
 })

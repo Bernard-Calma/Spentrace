@@ -1,12 +1,9 @@
-import { Alert, Button, Image, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
-import { leftArrow } from "../../../../assets/icons";
+import { Alert, StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
 import { useDispatch, useSelector } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
-import { addBudget, addBudgetToLocal } from "../../../features/budgetSlice";
-import { useState } from "react";
-
-import DateTimePicker from '@react-native-community/datetimepicker';
+import { addBudget } from "../../../features/budgetSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Entypo } from '@expo/vector-icons';
 
 
 const NavAddBudget = () => {
@@ -43,10 +40,7 @@ const NavAddBudget = () => {
     return(
         <>
             <TouchableWithoutFeedback onPress={() => handleChangeView("Budget")}>
-                <Image 
-                    source={leftArrow}
-                    style={styles.back}
-                />
+                <Entypo name="back" size={24} color="black" />
             </TouchableWithoutFeedback>  
             <Text style={ styles.text }>Add</Text>
             <TouchableWithoutFeedback onPress={handleSave}>
@@ -59,10 +53,6 @@ const NavAddBudget = () => {
 export default NavAddBudget;
 
 const styles = StyleSheet.create({
-    back: {
-        height: 15,
-        width: 15,
-    },
     text: {
         fontFamily: "roboto-bold", 
         fontSize: 18

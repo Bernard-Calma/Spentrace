@@ -1,7 +1,6 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
 import { Budget, Title } from "./components";
-import { useState } from "react";
 
 const BudgetList = () => {
     let runningAmount = 0
