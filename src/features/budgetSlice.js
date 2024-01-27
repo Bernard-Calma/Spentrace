@@ -39,6 +39,17 @@ export const addBudgetToLocal = createAsyncThunk("budget/addBudgetToLocal", asyn
       }
 })
 
+const modifyLocalStorage = (key, newValue) => {
+    try {
+        const jsonValue = JSON.stringify(newValue);
+        AsyncStorage.setItem(key, jsonValue);
+        // console.log(jsonValue, "Added")
+    } catch (e) {
+        // saving error
+        console.log(e)
+    }
+}
+
 const budgetSlice = createSlice({
     name: "budget",
     initialState,
@@ -47,7 +58,7 @@ const budgetSlice = createSlice({
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
             // console.log(state.budgetToAdd);
         },
-        addBudget: async (state) => {
+        addBudget: (state) => {
             // console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
             state.budgets = [...state.budgets, {...state.budgetToAdd, id: state.budgets?.length || 0}];
             state.budgetToAdd = {
@@ -61,19 +72,13 @@ const budgetSlice = createSlice({
             };
             // console.log("State budgets after adding", state.budgets);
             console.log("addBudgetToLocal: ", state.budgets)
-            try {
-                const jsonValue = JSON.stringify({budgets: state.budgets});
-                // // console.log(jsonValue, "Added")
-                await AsyncStorage.setItem('budgetList', jsonValue);
-            } catch (e) {
-                // saving error
-                console.log(e)
-            }
+            modifyLocalStorage("budgetList",{budgets: state.budgets})
         },
         deleteBudget: (state, {payload}) => {
             console.log("Delete budget: ", payload)
-            state.budgets = state.budgets.filter(budget => !budget.accountName === payload.accountName)
+            state.budgets = state.budgets.filter(budget => budget.accountName !== payload.accountName)
             console.log("Budgets after delete: ", state.budgets)
+            modifyLocalStorage("budgetList",{budgets: state.budgets})
         }
     },
     extraReducers: builder => {
