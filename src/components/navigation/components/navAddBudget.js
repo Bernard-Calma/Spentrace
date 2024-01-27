@@ -44,7 +44,7 @@ const NavAddBudget = () => {
             </TouchableWithoutFeedback>  
             <Text style={ styles.text }>Add</Text>
             <TouchableWithoutFeedback onPress={handleSave}>
-                <Text style={ styles.text }>Save</Text>
+                <Entypo name="save" size={24} color="black" />
             </TouchableWithoutFeedback>  
         </>
     )

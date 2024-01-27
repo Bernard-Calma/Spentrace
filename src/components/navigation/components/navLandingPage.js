@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableWithoutFeedback } from "react-native"
+import { Text, TouchableWithoutFeedback } from "react-native"
 import { useDispatch } from "react-redux";
 import { changeView } from "../../../features/viewSlice";
 import { Entypo } from '@expo/vector-icons';
@@ -11,7 +11,9 @@ const navLandingPage = () => {
     return(
         <>
             {/* Menu button */}
-            <Text style = {styles.menu}> = </Text>
+            <TouchableWithoutFeedback onPress={() => {}}>
+                <Entypo name="dots-three-horizontal" size={24} color="white" />
+            </TouchableWithoutFeedback>
             <Text style={{
                 fontFamily: "roboto-bold", 
                 fontSize: 18,
@@ -24,9 +26,3 @@ const navLandingPage = () => {
 }
 
 export default navLandingPage;
-
-const styles = StyleSheet.create({
-    menu: {
-        opacity: 0
-    }
-})
