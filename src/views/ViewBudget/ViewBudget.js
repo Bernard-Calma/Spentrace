@@ -32,7 +32,7 @@ const ViewBudget = () =>{
         <View style = {styles.viewBudgetContainer}>
             <TextValue 
                 name = {"Date"}
-                value = {months[dueDate.month - 1] + " " + dueDate.day}
+                value = {dueDate.toDateString()}
             />
             <TextValue 
                 name = {"Name"}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         // backgroundColor: "red",
-        borderRadius: "10",
+        borderRadius: 10,
         alignSelf: "center",
     }
 })
