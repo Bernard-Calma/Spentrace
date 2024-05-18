@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react"
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { useState } from "react"
+import { StyleSheet, Text, TextInput, View } from "react-native"
 import { DateText, RadioButtonText } from "../../../components"
 import { useDispatch, useSelector } from "react-redux"
 import { setBudgetToAdd } from "../../../features/budgetSlice"
-// import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Categories = (props) =>{
     const dispatch = useDispatch();
@@ -16,7 +15,6 @@ const Categories = (props) =>{
     } = useSelector(store => store.budget)
 
     const [selectedRadio, setSelectedRadio] = useState()
-    const [dateNum, setDateNum] = useState({month: 0, day: 0})
 
     const handleChangeBudgetToAdd = (key, value) => {
         dispatch(setBudgetToAdd({name: key, value: value}))
@@ -40,8 +38,6 @@ const Categories = (props) =>{
                 />
                 : type === "date"
                 ? <DateText 
-                    setDateNum = {setDateNum}
-                    dateNum = {dateNum}
                     handleChangeBudgetToAdd = {handleChangeBudgetToAdd}
                 />
                 : type === "type"
@@ -107,14 +103,14 @@ const styles = StyleSheet.create({
         height: 15,
         width: 15,
         borderWidth: 1,
-        borderRadius: "50%",
+        borderRadius: 20,
         marginRight: 5,
     },
     radioButtonInnerSelected: {
         height: 10,
         width: 10,
         margin: 1.5,
-        borderRadius: "50%",
+        borderRadius: 20,
         backgroundColor: "black",
     }
 })

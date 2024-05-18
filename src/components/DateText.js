@@ -1,51 +1,50 @@
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import { useSelector } from "react-redux";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
-const DateText = ({setDateNum, dateNum, handleChangeBudgetToAdd}) => {
+const DateText = ({handleChangeBudgetToAdd}) => {
     const {
         dueDate
     } = useSelector(store => store.budget.budgetToAdd)
 
-    const handleOnChangeDate = (day, inputNum, maxNum) => {
-        if(inputNum > maxNum) {
-            handleChangeBudgetToAdd("dueDate", {...dueDate, [day]: maxNum})
-        }
-        else handleChangeBudgetToAdd("dueDate", {...dueDate, [day]: inputNum})
-    }
-    const handleFixDate = (input) => {
-        if(dueDate[input] == 0) handleChangeBudgetToAdd("dueDate", {...dueDate, [input]: 1})
-        if(dueDate.day >= 30){
-            if(dueDate.month == 2) handleChangeBudgetToAdd("dueDate", {...dueDate, day: 29})
-            else if(dueDate.month % 2 == 0) {
-                handleChangeBudgetToAdd("dueDate", {...dueDate, day: 30})
-            } 
-        }
-    }
+    const [date, setDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate;
+        setShow(false);
+        setDate(currentDate);
+    };
+
+    const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
+
     return(
         <View style = {styles.dateInputContainer}>
-            <Text>Month</Text>
-            <TextInput 
-                style = {styles.dateInput}
-                textAlign="right"
-                inputMode="numeric"
-                maxLength={2}
-                placeholder="mm"
-                value = {dueDate.month.toString()}
-                onChangeText={text => handleOnChangeDate("month", text, 12)}
-                onEndEditing={() => handleFixDate("month")}
-            />
-            <Text>Date</Text>
-            <TextInput 
-                style = {styles.dateInput}
-                textAlign="right"
-                inputMode="numeric"
-                maxLength={2}
-                placeholder="dd"
-                value = {dueDate.day.toString()}
-                onChangeText={text => handleOnChangeDate("day", text, 31)}
-                onEndEditing={() => handleFixDate("day")}
-            />
+            <Button onPress={showDatepicker} title={date.toDateString()} />
+            {/* <Button onPress={showTimepicker} title="Show time picker!" /> */}
+            {/* <Text>selected: {date.toLocaleString()}</Text> */}
+            {show && (
+                <DateTimePicker
+                testID="dateTimePicker"
+                value={date}
+                mode={mode}
+                is24Hour={true}
+                onChange={onChange}
+                />
+            )}
         </View>
     )
 }

@@ -51,14 +51,14 @@ const styles = StyleSheet.create({
         height: 15,
         width: 15,
         borderWidth: 1,
-        borderRadius: "50%",
+        borderRadius: 20,
         marginRight: 5,
     },
     radioButtonInnerSelected: {
         height: 10,
         width: 10,
         margin: 1.5,
-        borderRadius: "50%",
+        borderRadius: 20,
         backgroundColor: "black",
     },
     radioButtonText: {
