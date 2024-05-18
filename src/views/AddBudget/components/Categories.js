@@ -18,7 +18,6 @@ const Categories = (props) =>{
 
     const handleChangeBudgetToAdd = (key, value) => {
         dispatch(setBudgetToAdd({name: key, value: value}))
-        
     }
     
     return(
@@ -46,7 +45,6 @@ const Categories = (props) =>{
                         names = {["income","expense"]}
                         selectedRadio = {selectedRadio}
                         setSelectedRadio = {setSelectedRadio}
-                        handleChangeBudgetToAdd = {handleChangeBudgetToAdd}
                     />
                 </View>
                 :<TextInput 

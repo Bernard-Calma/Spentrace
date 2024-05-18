@@ -1,17 +1,20 @@
 import { StyleSheet, Text, TouchableHighlight, View } from "react-native"
 import { useDispatch } from "react-redux";
 import { showBudget } from "../../../features/viewSlice";
+import { useState } from "react";
 
 const Budget = ({budget, runningAmount}) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const dispatch = useDispatch();
+    // console.log("Budget: ", budget)
+    const [date, setDate] = useState(new Date(budget.dueDate));
     return(
         <TouchableHighlight 
             underlayColor={"lightgray"}
             onPress={() => dispatch(showBudget(budget))
         }>
             <View style = {styles.budgetContainer}>
-                <Text style = {styles.budgetText}>{months[parseInt(budget.dueDate.month) - 1].slice(0,3)} {parseInt(budget.dueDate.day)}</Text>
+                <Text style = {styles.budgetText}>{date.toLocaleString().slice(0, -13) || ""}</Text>
                 <Text style = {styles.budgetText}>{budget.accountName}</Text>
                 <Text style = {budget.type === 1 ? styles.budgetTextPositive : styles.budgetTextNegative}>${parseInt(budget.amount).toFixed(2)}</Text>
                 <Text style = {runningAmount >= 0 ? styles.budgetTextPositive : styles.budgetTextNegative}>{(runningAmount >= 0 ? '$' : "-$") + Math.abs(runningAmount).toFixed(2)}</Text>

@@ -7,10 +7,7 @@ const initialState = {
         id: this.budgets?.length,
         accountName: "",
         amount: 0,
-        dueDate: {
-            month: 0,
-            day: 0
-        },
+        dueDate: new Date(),
         type: -1,
     },
     isLoading: false
@@ -55,27 +52,23 @@ const budgetSlice = createSlice({
     initialState,
     reducers: {
         setBudgetToAdd: (state, {payload}) => {
+            // console.log("payload: ", payload)
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
             // console.log(state.budgetToAdd);
+            // console.log(state.budgetToAdd.dueDate)
         },
         addBudget: (state) => {
-            // console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
+            console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
             state.budgets = [...state.budgets, {
                 ...state.budgetToAdd, 
                 id: state.budgets?.length || 0,
-                dueDate: {
-                    month: state.budgetToAdd.dueDate.month * 1,
-                    day: state.budgetToAdd.dueDate.day * 1,
-                },
+                dueDate: state.budgetToAdd.dueDate,
                 amount: state.budgetToAdd.amount * 1
             }];
             state.budgetToAdd = {
                 accountName: "",
                 amount: 0,
-                dueDate: {
-                    month: 0,
-                    day: 0
-                },
+                dueDate: new Date(),
                 type: "",
             };
             // console.log("State budgets after adding", state.budgets);

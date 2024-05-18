@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
-import { useSelector } from "react-redux";
+import { Button, StyleSheet, View } from "react-native";
+import { useDispatch } from "react-redux";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { setBudgetToAdd } from "../features/budgetSlice";
 
-const DateText = ({handleChangeBudgetToAdd}) => {
-    const {
-        dueDate
-    } = useSelector(store => store.budget.budgetToAdd)
 
+const DateText = () => {
+    const dispatch = useDispatch();
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
@@ -16,6 +15,9 @@ const DateText = ({handleChangeBudgetToAdd}) => {
         const currentDate = selectedDate;
         setShow(false);
         setDate(currentDate);
+        // console.log("Date: ",selectedDate)
+        // handleChangeBudgetToAdd("dueDate", selectedDate)
+        handleChangeBudgetToAdd(selectedDate)
     };
 
     const showMode = (currentMode) => {
@@ -31,6 +33,11 @@ const DateText = ({handleChangeBudgetToAdd}) => {
         showMode('time');
     };
 
+    const handleChangeBudgetToAdd = (value) => {
+        // console.log("handleChangeBudgetToAdd: ", {name: "dueDate", value: value})
+        dispatch(setBudgetToAdd({name: "dueDate", value: value}))
+    }
+
     return(
         <View style = {styles.dateInputContainer}>
             <Button onPress={showDatepicker} title={date.toDateString()} />
@@ -38,11 +45,11 @@ const DateText = ({handleChangeBudgetToAdd}) => {
             {/* <Text>selected: {date.toLocaleString()}</Text> */}
             {show && (
                 <DateTimePicker
-                testID="dateTimePicker"
-                value={date}
-                mode={mode}
-                is24Hour={true}
-                onChange={onChange}
+                    testID="dateTimePicker"
+                    value={date}
+                    mode={mode}
+                    is24Hour={true}
+                    onChange={onChange}
                 />
             )}
         </View>
