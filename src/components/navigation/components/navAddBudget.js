@@ -33,6 +33,7 @@ const NavAddBudget = () => {
           Alert.alert("Fill up all information")
         } else {
           dispatch(addBudget(budgetToAdd));
+          dispatch(changeView("Budget"))
         //   dispatch(addBudgetToLocal())
         }
         

@@ -74,6 +74,7 @@ const budgetSlice = createSlice({
             // console.log("State budgets after adding", state.budgets);
             console.log("addBudgetToLocal: ", state.budgets)
             modifyLocalStorage("budgetList",{budgets: state.budgets})
+            
         },
         deleteBudget: (state, {payload}) => {
             console.log("Delete budget: ", payload)
