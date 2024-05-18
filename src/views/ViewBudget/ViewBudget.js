@@ -3,6 +3,7 @@ import { TextValue } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBudget } from "../../features/budgetSlice";
 import { AntDesign } from '@expo/vector-icons';
+import { changeView } from "../../features/viewSlice";
 
 const ViewBudget = () =>{
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -23,8 +24,10 @@ const ViewBudget = () =>{
         },
         {
             text: "Yes",
-            onPress: () => dispatch(deleteBudget(budgetView))
-
+            onPress: () => {
+                dispatch(deleteBudget(budgetView))
+                dispatch(changeView("Budget"))
+            }
         }]
         )
     }
@@ -32,7 +35,7 @@ const ViewBudget = () =>{
         <View style = {styles.viewBudgetContainer}>
             <TextValue 
                 name = {"Date"}
-                value = {dueDate.toDateString()}
+                value = {dueDate}
             />
             <TextValue 
                 name = {"Name"}
