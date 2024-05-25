@@ -16,6 +16,8 @@ const ViewBudget = () =>{
         type
     } = budgetView;
 
+    console.log(dueDate.toLocaleString())
+
     const handleDelete = () => {
         Alert.alert("Delete", "Are you sure you weant to delete?",
         [{
@@ -35,7 +37,7 @@ const ViewBudget = () =>{
         <View style = {styles.viewBudgetContainer}>
             <TextValue 
                 name = {"Date"}
-                value = {dueDate}
+                value = {dueDate.toLocaleString().slice(0, -13) || ""}
             />
             <TextValue 
                 name = {"Name"}
