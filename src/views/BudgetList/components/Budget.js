@@ -7,17 +7,19 @@ const Budget = ({budget, runningAmount}) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const dispatch = useDispatch();
     // console.log("Budget: ", budget)
-    const [date, setDate] = useState(new Date(budget.dueDate));
+    // console.log(typeof(budget.dueDate))
+    console.log(`${new Date()} <= ${budget.dueDate} = ${new Date() <= budget.dueDate}`)
+    // console.log(new Date() >= budget.dueDate)
     return(
         <TouchableHighlight 
             underlayColor={"lightgray"}
             onPress={() => dispatch(showBudget(budget))
         }>
             <View style = {styles.budgetContainer}>
-                <Text style = {styles.budgetText}>{date.toLocaleString().slice(0, -13) || ""}</Text>
+                <Text style = {styles.budgetText}>{budget.dueDate.toLocaleString().slice(0, -13) || ""}</Text>
                 <Text style = {styles.budgetText}>{budget.accountName}</Text>
                 <Text style = {budget.type === 1 ? styles.budgetTextPositive : styles.budgetTextNegative}>${parseInt(budget.amount).toFixed(2)}</Text>
-                <Text style = {runningAmount >= 0 ? styles.budgetTextPositive : styles.budgetTextNegative}>{(runningAmount >= 0 ? '$' : "-$") + Math.abs(runningAmount).toFixed(2)}</Text>
+                <Text style = {runningAmount <= 0 ? styles.budgetTextPositive : styles.budgetTextNegative}>{(runningAmount >= 0 ? '$' : "-$") + Math.abs(runningAmount).toFixed(2)}</Text>
             </View>
         </TouchableHighlight>
 

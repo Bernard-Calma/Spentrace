@@ -33,7 +33,7 @@ const App = () => {
   if(!fontsLoaded) return null
   else return (
     <Provider store = {store}>
-      <SafeAreaView style={{flex: 1}} onLayout={onLayoutRootView}>
+      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
         <Header />
         <LandingPage />
         <StatusBar style="auto" />
@@ -47,12 +47,13 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
     fontFamily: "Roboto",
-    borderWidth: 1,
-    borderColor: "red"
+    // borderWidth: 1,
+    // borderColor: "red",
+    paddingTop: 50,
   },
 });

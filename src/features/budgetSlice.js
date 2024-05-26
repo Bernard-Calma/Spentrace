@@ -93,11 +93,16 @@ const budgetSlice = createSlice({
             // console.log("rejected payload: ", payload)
         })
         .addCase(getBudgets.fulfilled, (state, {payload}) => {
-            // console.log("getBudgets payload: ", payload)
-            if (!payload) {
+            const budgets = payload.budgets
+            // console.log("Budgets Before: ", budgets)
+            // Change budget due date from text to date object before passing to APP
+            budgets.map(budget => budget.dueDate = new Date(budget.dueDate))
+            // console.log("Budgets After: ", budgets)
+            
+            if (!budgets) {
                 state.budgets = []
             } else {
-                state.budgets = payload.budgets != null ? payload.budgets : [];
+                state.budgets = budgets != null ? budgets : [];
             }
             state.isLoading = false;
         })
