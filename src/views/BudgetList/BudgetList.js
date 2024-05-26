@@ -15,7 +15,7 @@ const BudgetList = () => {
             <ScrollView style = {styles.budgetsScrollView}>
             {
                 budgets?.map((budget, index) => {
-                    if(budget.type === 1) runningAmount += parseInt(budget.amount)
+                    if(budget.type === 0) runningAmount += parseInt(budget.amount)
                     else runningAmount -= parseInt(budget.amount)
                     return budgets.length && <Budget 
                         key = {index}

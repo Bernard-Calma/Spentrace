@@ -45,7 +45,7 @@ const ViewBudget = () =>{
             />
             <TextValue 
                 name = {"Amount"}
-                value = {parseInt(amount).toFixed(2)}
+                value = {`$${parseInt(amount).toFixed(2)}`}
             />
             <TextValue 
                 name = {"Type"}

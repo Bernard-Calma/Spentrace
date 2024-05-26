@@ -25,7 +25,7 @@ export const getBudgets = createAsyncThunk("buget/getBudgets", async (payload, t
 })
 
 export const addBudgetToLocal = createAsyncThunk("budget/addBudgetToLocal", async (state, thunkAPI) => {
-    console.log("addBudgetToLocal: ", state.budgets)
+    // console.log("addBudgetToLocal: ", state.budgets)
     try {
         const jsonValue = JSON.stringify(value);
         // console.log(jsonValue, "Added")
@@ -54,11 +54,11 @@ const budgetSlice = createSlice({
         setBudgetToAdd: (state, {payload}) => {
             // console.log("payload: ", payload)
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
-            console.log(state.budgetToAdd);
+            // console.log(state.budgetToAdd);
             // console.log(state.budgetToAdd.dueDate)
         },
         addBudget: (state) => {
-            console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
+            // console.log("Adding Budget: ", {...state.budgetToAdd, id: state.budgets?.length || 0})
             state.budgets = [...state.budgets, {
                 ...state.budgetToAdd, 
                 id: state.budgets?.length || 0,
@@ -72,14 +72,14 @@ const budgetSlice = createSlice({
                 type: "",
             };
             // console.log("State budgets after adding", state.budgets);
-            console.log("addBudgetToLocal: ", state.budgets)
+            // console.log("addBudgetToLocal: ", state.budgets)
             modifyLocalStorage("budgetList",{budgets: state.budgets})
             
         },
         deleteBudget: (state, {payload}) => {
-            console.log("Delete budget: ", payload)
+            // console.log("Delete budget: ", payload)
             state.budgets = state.budgets.filter(budget => budget.accountName !== payload.accountName)
-            console.log("Budgets after delete: ", state.budgets)
+            // console.log("Budgets after delete: ", state.budgets)
             modifyLocalStorage("budgetList",{budgets: state.budgets})
         }
     },
@@ -111,10 +111,10 @@ const budgetSlice = createSlice({
         })
         .addCase(addBudgetToLocal.rejected, (state, {payload}) => {
             state.isLoading = false;
-            console.log("rejected payload: ", payload)
+            // console.log("rejected payload: ", payload)
         })
         .addCase(addBudgetToLocal.fulfilled, (state, {payload}) => {
-            console.log("addBudgetToLocal payload: ", payload)
+            // console.log("addBudgetToLocal payload: ", payload)
             // state.budgets = [...state.budgets, payload]
             // state.isLoading = false;
         })
