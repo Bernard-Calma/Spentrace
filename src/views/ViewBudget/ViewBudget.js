@@ -49,7 +49,7 @@ const ViewBudget = () =>{
             />
             <TextValue 
                 name = {"Type"}
-                value = {type === 0 ? "Expense" : "Income"}
+                value = {type === 0 ? "Income" : "Expense"}
             />
             <TouchableHighlight
                 onPress={() => handleDelete()} 

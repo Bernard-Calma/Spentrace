@@ -54,7 +54,7 @@ const budgetSlice = createSlice({
         setBudgetToAdd: (state, {payload}) => {
             // console.log("payload: ", payload)
             state.budgetToAdd = {...state.budgetToAdd, [payload.name]: payload.value};
-            // console.log(state.budgetToAdd);
+            console.log(state.budgetToAdd);
             // console.log(state.budgetToAdd.dueDate)
         },
         addBudget: (state) => {
