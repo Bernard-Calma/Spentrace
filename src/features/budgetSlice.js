@@ -64,13 +64,14 @@ const budgetSlice = createSlice({
                 id: state.budgets?.length || 0,
                 dueDate: state.budgetToAdd.dueDate,
                 amount: state.budgetToAdd.amount * 1
-            }];
+            }].sort((a,b) => (a.dueDate > b.dueDate) ? 1 : -1);
             state.budgetToAdd = {
                 accountName: "",
                 amount: 0,
                 dueDate: new Date(),
                 type: "",
             };
+
             // console.log("State budgets after adding", state.budgets);
             // console.log("addBudgetToLocal: ", state.budgets)
             modifyLocalStorage("budgetList",{budgets: state.budgets})
