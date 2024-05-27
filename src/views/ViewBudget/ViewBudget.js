@@ -16,7 +16,7 @@ const ViewBudget = () =>{
         type
     } = budgetView;
 
-    console.log(dueDate.toLocaleString())
+    // console.log(dueDate.toLocaleString())
 
     const handleDelete = () => {
         Alert.alert("Delete", "Are you sure you weant to delete?",

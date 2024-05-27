@@ -13,6 +13,10 @@
     "production": {}
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "serviceAccountKeyPath":  "C:\Users\Developer\Documents\Projects\Keys and Builds\Spentrace\spentrace-424521-cd4d72e14c6d.json"
+      }
+    }
   }
 }

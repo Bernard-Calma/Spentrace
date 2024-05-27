@@ -96,7 +96,7 @@ const budgetSlice = createSlice({
             const budgets = payload.budgets
             // console.log("Budgets Before: ", budgets)
             // Change budget due date from text to date object before passing to APP
-            budgets.map(budget => budget.dueDate = new Date(budget.dueDate))
+            budgets.sort((a,b) => (a.dueDate > b.dueDate) ? 1 : -1).map(budget => budget.dueDate = new Date(budget.dueDate))
             // console.log("Budgets After: ", budgets)
             
             if (!budgets) {

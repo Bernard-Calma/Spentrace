@@ -7,8 +7,6 @@ const BudgetList = () => {
     const {
         budgets
     } = useSelector(store => store.budget)
-    // console.log("BudgetList - Budget: ", budgets)
-    // console.log("BudgetList - Budget - Length: ", budgets.length)
     return(
         <View style={styles.budgetList}>
             <Title/>
