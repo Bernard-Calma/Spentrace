@@ -15,7 +15,7 @@ const viewSlice = createSlice({
             state.view = payload;
         },
         showBudget: (state, {payload}) => {
-            console.log(payload)
+            // console.log(payload)
             state.view = "ViewBudget",
             state.budgetView = payload;
         }

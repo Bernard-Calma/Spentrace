@@ -17,7 +17,7 @@ export const getBudgets = createAsyncThunk("buget/getBudgets", async (payload, t
     try {
         const jsonValue = await AsyncStorage.getItem("budgetList");
         // console.log("Get Budgets - Async Thunk: ", jsonValue);
-        return jsonValue != null ? JSON.parse(jsonValue) : null;
+        return jsonValue != null ? JSON.parse(jsonValue) : {"budgets": []};
     } catch(err) {
         console.log(err)
         return thunkAPI.rejectWithValue("Error getting bills")

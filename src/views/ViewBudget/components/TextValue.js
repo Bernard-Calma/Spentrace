@@ -16,11 +16,19 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: 10
+        margin: 5,
     },
     textName: {
         fontSize: 24,
-        fontFamily: "firaCode-bold"
+        paddingLeft: 5,
+        color: "black",
+        fontFamily: "firaCode-bold",
+        backgroundColor: "white",
+        borderColor: "black",
+        borderWidth: 2.5,
+        borderRadius: 5,
+        shadowColor: "black",
+        elevation: 7,
     },
     textValue: {
         fontSize: 20,
