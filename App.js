@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from 'react';
+import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
@@ -13,27 +13,25 @@ SplashScreen.preventAutoHideAsync();
 
 const App = () => {
   const [fontsLoaded] = useFonts({
-    "roboto": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
+    "Roboto": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
     "roboto-bold": require("./assets/fonts/Roboto/Roboto-Bold.ttf"),
-    "firaCode": require("./assets/fonts/Fira_Code/static/FiraCode-Regular.ttf"),
-    "firaCode-bold": require("./assets/fonts/Fira_Code/static/FiraCode-Bold.ttf")
+    "FiraCode": require("./assets/fonts/Fira_Code/static/FiraCode-Regular.ttf"),
+    "FiraCode-bold": require("./assets/fonts/Fira_Code/static/FiraCode-Bold.ttf")
   })
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
-      await SplashScreen.hideAsync();
+  useEffect(() => {
+    const prepare = async () => {
+      await SplashScreen.preventAutoHideAsync();
     }
-  }, [fontsLoaded]);
+    prepare();
+  }, [])
 
-  if(!fontsLoaded) return null
-  else return (
+  if(!fontsLoaded) return undefined
+  else SplashScreen.hideAsync();
+  
+  return (
     <Provider store = {store}>
-      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+      <SafeAreaView style={styles.container}>
         <Header />
         <LandingPage />
         <StatusBar style="auto" />
