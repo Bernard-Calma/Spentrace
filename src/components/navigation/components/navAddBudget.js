@@ -55,7 +55,7 @@ export default NavAddBudget;
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: "roboto-bold", 
+        fontFamily: "Roboto-bold", 
         fontSize: 18
     }
 })

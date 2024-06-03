@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         // borderColor: "red",
     },
     text: {
-        fontFamily: "firaCode",
+        fontFamily: "FiraCode",
         fontSize: 16
     },
     textInput: {

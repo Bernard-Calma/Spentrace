@@ -18,7 +18,7 @@ const MonthChanger = () => {
             </TouchableWithoutFeedback>
             
             <Text style={{
-                fontFamily: "roboto", 
+                fontFamily: "Roboto", 
                 fontSize: 16,
             }}>{months[month]} {year}</Text>
 

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         paddingLeft: 5,
         color: "black",
-        fontFamily: "firaCode-bold",
+        fontFamily: "FiraCode-bold",
         backgroundColor: "white",
         borderColor: "black",
         borderWidth: 2.5,

@@ -14,7 +14,7 @@ SplashScreen.preventAutoHideAsync();
 const App = () => {
   const [fontsLoaded] = useFonts({
     "Roboto": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
-    "roboto-bold": require("./assets/fonts/Roboto/Roboto-Bold.ttf"),
+    "Roboto-bold": require("./assets/fonts/Roboto/Roboto-Bold.ttf"),
     "FiraCode": require("./assets/fonts/Fira_Code/static/FiraCode-Regular.ttf"),
     "FiraCode-bold": require("./assets/fonts/Fira_Code/static/FiraCode-Bold.ttf")
   })

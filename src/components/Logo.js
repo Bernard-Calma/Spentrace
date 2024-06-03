@@ -4,7 +4,7 @@ const Logo = () => {
     return(
         <View style={styles.logo}>
             <Text style={{
-                fontFamily: "roboto-bold", 
+                fontFamily: "Roboto-bold", 
                 fontWeight: "bold", 
                 fontSize: 26,
                 textAlign: "center"

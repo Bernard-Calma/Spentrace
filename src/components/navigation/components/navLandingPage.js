@@ -15,7 +15,7 @@ const navLandingPage = () => {
                 <Entypo name="dots-three-horizontal" size={24} color="white" />
             </TouchableWithoutFeedback>
             <Text style={{
-                fontFamily: "roboto-bold", 
+                fontFamily: "Roboto-bold", 
                 fontSize: 18,
             }}>Budget List</Text>
             <TouchableWithoutFeedback onPress={() => handleChangeView("Add Budget")}>
