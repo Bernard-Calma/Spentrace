@@ -20,17 +20,18 @@ const styles = StyleSheet.create({
     },
     textName: {
         fontSize: 24,
-        paddingLeft: 5,
-        color: "black",
+        padding: 5,
+        color: "white",
         fontFamily: "FiraCode-bold",
-        backgroundColor: "white",
-        borderColor: "black",
-        borderWidth: 2.5,
+        backgroundColor: "#141414",
+        borderColor: "white",
+        borderWidth: 1,
         borderRadius: 5,
-        shadowColor: "black",
-        elevation: 7,
+        shadowColor: "white",
+        elevation: 3,
     },
     textValue: {
         fontSize: 20,
+        color: "#B0B7C4"
     }
 })

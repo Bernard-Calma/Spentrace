@@ -7,7 +7,7 @@ const navShowBudget = () => {
     const dispatch = useDispatch();
     return(<>
         <TouchableWithoutFeedback onPress={() => dispatch(changeView("Budget"))}>
-            <Entypo name="back" size={24} color="black" />
+            <Entypo name="back" size={24} color="white" />
         </TouchableWithoutFeedback>  
     </>)
 }

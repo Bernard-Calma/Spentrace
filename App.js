@@ -45,11 +45,11 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: '#252525',
     color: "#B0B7C4",
     // alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     fontFamily: "Roboto",
     // borderWidth: 1,
     // borderColor: "red",

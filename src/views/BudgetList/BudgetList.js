@@ -32,12 +32,12 @@ export default BudgetList;
 const styles = StyleSheet.create({
     budgetList: {
         width: "100%",
-        border: "solid",
+        // border: "solid",
         // borderWidth: 2,
         // borderColor: "blue",
     },
     budgetsScrollView: {
-        height: "85%"
+        // height: "50%"
     }
 })
 

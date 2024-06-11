@@ -28,7 +28,8 @@ export default LandingPage;
 const styles = StyleSheet.create({
     LandingPage: {
         width: "100%",
-        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         // borderWidth: 1,
         // borderColor: "red"
     }

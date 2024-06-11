@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, TouchableHighlight, View } from "react-native"
+import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View } from "react-native"
 import { TextValue } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteBudget } from "../../features/budgetSlice";
@@ -35,7 +35,7 @@ const ViewBudget = () =>{
     }
     return(
         <View style = {styles.viewBudgetContainer}>
-        <Text style={styles.headerTitle}>{accountName}</Text>
+        <TextInput style={styles.headerTitle} editable={false}>{accountName}</TextInput>
             <TextValue 
                 name = {"Date"}
                 value = {`${months[dueDate.getMonth()].slice(0,3)} ${dueDate.getDate()} ${dueDate.getFullYear()}` || ""}
@@ -54,8 +54,6 @@ const ViewBudget = () =>{
             >
             <AntDesign name="delete" size={30} color="red" />
             </TouchableHighlight>
-            
-            
         </View>
     )
 }
@@ -65,10 +63,12 @@ export default ViewBudget;
 
 const styles = StyleSheet.create({
     viewBudgetContainer: {
-        height: 300,
+        width: 350,
+        // display: "flex",
         // justifyContent: "space-around",
-        // borderColor: "green", 
-        // borderWidth: 1,
+        borderColor: "#B0B7C4", 
+        borderWidth: 3,
+        borderRadius: 20
     },
     deleteContainer: {
         justifyContent: "center",
@@ -80,6 +80,9 @@ const styles = StyleSheet.create({
     headerTitle: {
         textAlign: "center",
         fontSize: 32,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "white",
+        borderBottomWidth: 3,
+        borderColor: "rgb(208,255,0)"
     }
 })
