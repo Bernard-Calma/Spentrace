@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         width: 15,
         borderWidth: 1,
         borderRadius: 20,
+        borderColor: "white",
         marginRight: 5,
     },
     radioButtonInnerSelected: {
@@ -59,9 +60,10 @@ const styles = StyleSheet.create({
         width: 10,
         margin: 1.5,
         borderRadius: 20,
-        backgroundColor: "black",
+        backgroundColor: "#B0B7C4",
     },
     radioButtonText: {
-        textTransform: "capitalize"
+        textTransform: "capitalize",
+        color: "#B0B7C4"
     }
 })

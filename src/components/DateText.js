@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, StyleSheet, View } from "react-native";
 import { useDispatch } from "react-redux";
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { setBudgetToAdd } from "../features/budgetSlice";
+import RNDateTimePicker from "@react-native-community/datetimepicker";
 
 
 const DateText = () => {
@@ -44,12 +44,13 @@ const DateText = () => {
             {/* <Button onPress={showTimepicker} title="Show time picker!" /> */}
             {/* <Text>selected: {date.toLocaleString()}</Text> */}
             {show && (
-                <DateTimePicker
+                <RNDateTimePicker
                     testID="dateTimePicker"
                     value={date}
                     mode={mode}
                     is24Hour={true}
                     onChange={onChange}
+                    textColor="white"
                 />
             )}
         </View>
@@ -65,12 +66,12 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     dateInput: {
-        width: 30,
+        width: 40,
         fontSize: 16,
         fontWeight: "bold",
-        color: "#10f",
+        color: "white",
         borderWidth: 1,
         borderColor: "black",
-        margin: 5
+        // margin: 5
     },
 })

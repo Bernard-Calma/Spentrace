@@ -6,7 +6,7 @@ const initialState = {
     budgetToAdd: {
         id: this.budgets?.length,
         accountName: "",
-        amount: 0,
+        amount: "",
         dueDate: new Date(),
         type: -1,
     },

@@ -43,7 +43,7 @@ const NavAddBudget = () => {
             <TouchableWithoutFeedback onPress={() => handleChangeView("Budget")}>
                 <Entypo name="back" size={24} color="white" />
             </TouchableWithoutFeedback>  
-            <Text style={ styles.text }>Add</Text>
+            <Text style={ styles.text }>ADD</Text>
             <TouchableWithoutFeedback onPress={handleSave}>
                 <Entypo name="save" size={24} color="white" />
             </TouchableWithoutFeedback>  
@@ -56,6 +56,7 @@ export default NavAddBudget;
 const styles = StyleSheet.create({
     text: {
         fontFamily: "Roboto-bold", 
-        fontSize: 18
+        fontSize: 24,
+        color: "#B0B7C4"
     }
 })

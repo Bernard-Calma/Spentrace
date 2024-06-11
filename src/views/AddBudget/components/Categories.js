@@ -74,18 +74,25 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: "FiraCode",
-        fontSize: 16
+        fontSize: 16,
+        color: "#B0B7C4"
     },
     textInput: {
-        width: "50%",
+        width: 130,
         fontSize: 16,
-        color: "#10f",
+        color: "black",
+        borderColor: "black",
+        borderWidth: 1,
+        backgroundColor: "white"
     },
     numberInput: {
-        width: 100,
+        width: 130,
         fontSize: 16,
         fontWeight: "bold",
-        color: "#10f",
+        color: "black",
+        borderColor: "black",
+        borderWidth: 1,
+        backgroundColor: "white"
     },
     choicesContainer: {
         flexDirection: "row",
@@ -109,6 +116,6 @@ const styles = StyleSheet.create({
         width: 10,
         margin: 1.5,
         borderRadius: 20,
-        backgroundColor: "black",
+        backgroundColor: "#B0B7C4",
     }
 })
