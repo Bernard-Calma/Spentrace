@@ -11,15 +11,16 @@ const navLandingPage = () => {
     return(
         <>
             {/* Menu button */}
-            <TouchableWithoutFeedback onPress={() => {}}>
+            {/* <TouchableWithoutFeedback onPress={() => {}}>
                 <Entypo name="dots-three-horizontal" size={24} color="white" />
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
             <Text style={{
                 fontFamily: "Roboto-bold", 
-                fontSize: 18,
+                fontSize: 16,
+                color: "#B0B7C4"
             }}>Budget List</Text>
             <TouchableWithoutFeedback onPress={() => handleChangeView("Add Budget")}>
-                <Entypo name="add-to-list" size={24} color="black" />
+                <Entypo name="add-to-list" size={24} color="white" />
             </TouchableWithoutFeedback>
         </>
     )

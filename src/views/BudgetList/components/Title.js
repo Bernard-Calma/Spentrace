@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-evenly",
         borderWidth: 2,
-        borderColor: "black",
+        borderColor: "gray",
+        shadowColor: "white",
+        elevation: 1.5,
     },
     titleText: {
         width: "25%",
@@ -26,5 +28,9 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         borderColor: "black",
+        color: "white",
+        textShadowColor: 'white',
+        textShadowOffset: {width: 0, height: 0},
+        textShadowRadius: 10
     }
 })

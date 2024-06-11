@@ -41,11 +41,11 @@ const NavAddBudget = () => {
     return(
         <>
             <TouchableWithoutFeedback onPress={() => handleChangeView("Budget")}>
-                <Entypo name="back" size={24} color="black" />
+                <Entypo name="back" size={24} color="white" />
             </TouchableWithoutFeedback>  
             <Text style={ styles.text }>Add</Text>
             <TouchableWithoutFeedback onPress={handleSave}>
-                <Entypo name="save" size={24} color="black" />
+                <Entypo name="save" size={24} color="white" />
             </TouchableWithoutFeedback>  
         </>
     )

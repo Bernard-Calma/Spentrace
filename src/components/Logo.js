@@ -3,12 +3,7 @@ import { StyleSheet, Text, View } from "react-native"
 const Logo = () => {
     return(
         <View style={styles.logo}>
-            <Text style={{
-                fontFamily: "Roboto-bold", 
-                fontWeight: "bold", 
-                fontSize: 26,
-                textAlign: "center"
-            }}>Spentrace</Text>      
+            <Text style={styles.logoText}>Spentrace</Text>      
         </View>
 
     )
@@ -18,9 +13,13 @@ export default Logo;
 
 const styles = StyleSheet.create({
     logo: {
-        borderWidth: 3,
-        borderRadius: 10,
-        borderColor: "black",
-        padding: 5
+        borderBottomWidth: 1,
+        borderColor: "white",
+    },
+    logoText: {
+        fontFamily: "Roboto-bold", 
+        fontWeight: "bold", 
+        fontSize: 26,
+        color: "white",
     }
 })

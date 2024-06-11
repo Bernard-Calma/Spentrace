@@ -46,12 +46,13 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#252525',
+    color: "#B0B7C4",
     // alignItems: 'center',
     justifyContent: 'center',
     fontFamily: "Roboto",
     // borderWidth: 1,
     // borderColor: "red",
-    paddingTop: 50,
+    paddingTop: 5,
   },
 });

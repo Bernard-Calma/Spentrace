@@ -16,7 +16,7 @@ export default Header;
 const styles = StyleSheet.create({
     header: {
         width: "100%",
-        alignItems: "center",
+        // alignItems: "center",
         // borderColor: "green", 
         // borderWidth: 1,
     }

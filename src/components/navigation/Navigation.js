@@ -18,7 +18,7 @@ export default Navigation;
 
 const styles = StyleSheet.create({
     navContainer: {
-        padding: 10,
+        padding: 5,
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
