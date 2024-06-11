@@ -32,7 +32,7 @@ const Categories = (props) =>{
                     clearButtonMode="while-editing"
                     textAlign="right"
                     placeholder="$0"
-                    value = {budgetToAdd.amount.toString()}
+                    value = {budgetToAdd.amount.toString().replace(/[^0-9]/g, '')}
                     onChange = {e => handleChangeBudgetToAdd("amount", e.nativeEvent.text)}
                 />
                 : type === "date"
